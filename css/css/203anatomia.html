@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<!-- CTRL + B esconde/exibe a barra lateral do VS code.
+     CTRL + P permite navegar entre os arquivos da pasta digitando seu nome.
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .seletor {
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            /* Portanto temos valores hexadecimais, valores numéricos associados a 
+            unidades de medidas, valores pré-definidos, múltiplos valores */
+            border: solid 5px navy; /* shorthand property, propriedades de 
+            acesso mais rápido, aplicamos mais de uma propriedade por vez para um 
+            certo atributo.*/
+            font-family: Helvetica, monospace; /* Alternativas, se não achar a 
+            primeira, vai pra segunda. Múltiplos valores para alternativa.*/
+
+            /* Podemos chamar funções pré-definidas no CSS, por exemplo: */
+            width: calc(100% - 40px); 
+            /*Irá pegar 100% da largura da tela, e disso irá tirar 40 pixels.*/
+            background-color: rgb(34, 153, 189);
+            /*rgb é outra função css pré-definida para gerar uma cor.*/
+        }
+            /*Usando uma pseudo-classe: */
+            .seletor:hover {
+                background-color: orangered;
+            }
+            /*O :hover uma pseudo-classe que será aplicada quando o mouse do usuário
+            passar por cima do componente.*/
+
+            /* Usando um pseudo-elemento */
+            .seletor::first-letter {
+                font-size: 60px;
+                font-weight: bold;
+            }
+            /*Um exemplo é o ::first-letter , que aplica em uma determinada parte de
+            um elemento e não nele inteiro, nesse caso, somente na primeira letra.
+            Usamos uma pseudo classe utilizando :, e um pseudo elemento com :: , ou 
+            seja, duas vezes dois pontos.
+            
+            Propriedades em CSS usam o dashed-case, nomes separados por - , ou seja, 
+            o hífen.
+            */
+
+            /*Padrão de nomenclatura:
+            dash-case ou camelCase ?
+            Podemos usar qualquer um dos padrões para dar nome a classes, atributos e
+            ids para trabalharmos no CSS com eles depois. O importante é manter um
+            padrão, se usar dash-case, usar em todos, então manter uma consistência
+            na nomenclatura. Até pode usar os 2 em conjunto desde que um padrão seja
+            seguido e este padrão seja compreendido por todos da equipe de forma clara,
+            por exemplo é utilizado camel case mas sempre que for para tratar classes
+            filhas é utilizado dash case.
+
+            Diferente do HTML, CSS é case-sensitive. Para estilizarmos tags diretamente
+            com CSS, aí não importa o case sensitive,
+            então se formos estilizar uma div, tanto faz por Div ou DIV, mas se formos
+            estilizar alguma classe / id ou algum componente próprio nosso, é preciso 
+            seguir sua escrita certo posi é case sensitive.
+
+            No projeto utilizaremos o dash-case.
+            */
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>

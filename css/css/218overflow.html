@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Overflow</title>
+    <style>
+        /* É quando um componente estrapola seu tamanho e 
+        passa por cima de outro componente. Veremos algumas
+        estratégias do que podemos fazer quando isso ocorre.*/
+        div {
+            font-size: 40px;
+            height: 100px;
+            width: 260px;
+            border: solid 3px;
+            /* Tudo que estrapola o elemento é escondido e 
+            não vai apareceR: */
+            overflow: hidden;
+            /* Fará o scroll para o componente que estrapolou
+            tanto no eixo X quanto no Y se necessário. */
+            /* overflow: scroll; */
+            /* Overflow apenas no eixo X: */
+            /* overflow-x: scroll; */
+            /* Overflow apenas no eixo Y: */
+            overflow-y: hidden;
+            /* Se não pormos nada por default ele passa o 
+            componente e fica aparecendo. */
+            /* Se quisermos ter um comportamento diferente 
+            de overflow no eixo Y e diferente no eixo X, aí
+            usamos o overflow-sentido , se não usamos apenas 
+            o overflow e trabalhamos com ele que serve pros 2 */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        TudoFuncionaMuitoBemEmCSS!!!
+        Texto muito grande para caber nessa div.
+        Já pensou qual será o comportamento padrão?
+    </div>
+</body>
+</html>

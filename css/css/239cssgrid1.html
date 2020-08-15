@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+        body {
+            /* Só de colocar display: grid, é ocupado 
+            100% da tela do usuário. Podemos trabalhar 
+            com o display grid junto do display flex, 
+            como nesse caso que o body é grid e as divs
+            dentro do body é flex. Todo espaço da tela
+            foi ocupada devido height: calc(100% - 40px);
+            */
+            display: grid;
+            /* O grid é bidimensional, tem linhas e 
+            colunas. No css grid não há definição de
+            direção igual no flex que tem main axis e 
+            cross axis, aqui trabalhamos nativamente com
+            linhas e colunas. */
+            /* Template, organização das colunas no 
+            nosso grid, que até o momento temos uma 
+            única coluna. 
+            Colocando  grid-template-columns: 50% 50%;
+            será ocupado pela primeira coluna 50% do 
+            espaço e pela segunda coluna 50% do espaço.
+            Colocando 50% 50% indica que vamos passar a 
+            ter 2 colunas, então antes era 1 coluna só e
+            agora passam a ser 2 colunas.*/
+            grid-template-columns: 50% 50%;
+            /* Quando temos valores iguais, como no caso
+            que é 50% 50%, dois valores iguais, podemos
+            usar a função repeat. 
+            No caso colocamos para repetir 4 vezes, tendo 3 
+            colunas e cada uma com 8.33%, ou seja, teremos 12
+            colunas no total porque temos 4 colunas sendo que 
+            cada uma representa 3 colunas com 8.33% cada, logo,
+            temos 12 colunas no total. Temos 12 divs dentro 
+            do body que é grid, o 4 será quantas divs estarão 
+            dispostas em uma única linha, e a quantidade de
+            porcentagem representa quantas colunas haverão 
+            naquela linha, enquanto o valor da porcentagem é 
+            o width de cada um dos elementos dentro da página.*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);
+            grid-template-columns: repeat(4, 8.33%);
+            /* Dá o mesmo resultado de 
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33%);
+            : */
+            grid-template-columns: repeat(12, 8.33%);
+            /* Podemos agrupar o repeat com outras colunas depois
+            no caso o repeat cria 11 colunas com 100px cada, e 
+            fora do repeat temos 100px para indicar que todas 
+            colunas do repeat serão agrupadas com uma coluna que
+            tem 100 px também. */
+            grid-template-columns: repeat(11, 100px) 100px;
+            /* Outra função que temos é o minmax, em que podemos
+            definir o intervalo de uma coluna, exemplo: 
+            minmax(100px, 300px); 
+            No caso essa coluna terá no mínimo 100px e no máximo
+            300 px. Dependendo da organização da tela e dos 
+            outros elementos a coluna ficará navegando nesse
+            intervalo.*/
+            /* Definindo 3 colunas com valores: 
+            No caso a primeira coluna tera 200px, a segunda 
+            coluna tem 20% e a terceira coluna vai pegar 1
+            fragmento, que é o resto que sobrou na tela.*/
+            grid-template-columns: 200px 20% 1fr;
+            /* Nesse caso, dividimos a largura em 12 colunas. A
+            primeira coluna, que é a lateral esquerda pega 1/4 
+            largura, o meio pega metade da largura, e a lateral
+            direita pega 1/4 de largura.*/
+            grid-template-columns: 3fr 6fr 3fr;
+            /* Agora trabalharemos com as linhas: */
+            /* A primeira linha tem 50%, a segunda 25%, a 
+            terceira e a quarta 12.5% */
+            grid-template-rows: 50% 25% 12.5% 12.5%;
+            /* A primeira linha ocupa 100px e a segunda 1fr. */
+            grid-template-rows: 100px 1fr;
+            /* Temos 4 linhas mas aplicamos um template para 
+            apenas 2 linhas, em que a primeira é 100px e a 
+            segunda 1fr. Isso será aplicado, enquanto a terceira
+            e a quarta linha vão pegar o espaço que sobrar de 
+            acordo com que definimos na primeira e na segunda. 
+            A terceira e quarta linha vão ter o tamanho necessário
+            para renderizar seus conteúdos.*/
+            /* Esse caso é a mesma ideia, a quarta linha ia ter
+            o tamanho necessário para renderizar enquanto o resto
+            das linhas já tem o tamanho definido: */
+            grid-template-rows: 100px 1fr 150px;
+            /* Nesse caso que temos 100px e 100px as 
+            2 primeiras linhas ocupam 100px cada, enquanto
+            a terceira e a quarta irão pegar todo tamanho
+            restante para completar a tela inteira e dividir
+            igual para ambos. */
+            grid-template-rows: 100px 100px;
+            grid-template-rows: 100px 1fr;
+            /* Quando colocamos auto, é pego todas 
+            linhas restantes e divididas de forma igua
+            litária. */
+            grid-template-rows: 100px auto;
+            /* Mas o ideal é colocarmos auto para todas
+            linhas que sabemos que irá ter em nosso sistema
+            isso porque a numeração da linha só é dada se
+            ela for referenciada. */
+            grid-template-rows: 100px auto auto auto;
+        }
+
+        .d8 {
+            /* Podemos definir cada elemento dentro da 
+            grid ocupando + de 1 única linha / coluna,
+            assim como é com o colspan e rowspan na 
+            tag table. */
+            /* Inicia a partir da coluna 2 e termina na
+            coluna 4*/
+            grid-column-start: 2;
+            grid-column-end: 4;
+            /* Começa na linha 2, e de 1 span de 2 casas,
+            ou seja, use a casa atual + a do lado, dando
+            o mesmo resultado da linha 134 + 135. */
+            grid-column-end: span 2;
+            grid-row-start: 3;
+            grid-row-end: 5;
+            grid-row-end: span 2;
+        }
+
+        .d10, .d11 {
+            /* É possível haver sobreposição de células então
+        é preciso tomar cuidado */
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 5;
+        grid-row-end: span 1;
+        /* Nesse caso a div 11, .d11 sobrepõe a div 10
+        .d10 */
+        }
+
+        .d10 {
+            /* A div 10 está em baixo da div 11, então
+            podemos mexer no z-index que é o eixo Z 
+            para fazer com que o 10 apareça mesmo tendo
+            sido sobreposto, ele irá aparecer por cima do
+            11, isso porque o z-index é a profundidade
+            dos elementos. Esse seria o eixo da profundidade
+            para dizer quem fica por cima de quem.*/
+            z-index: 10;
+            /* COm o z-index 1 ou 0 ainda sim o d10 
+            ficaria na frente do d11, agora se pormos um
+            z-index negativo, como -1, aí o d11 volta a 
+            ficar na frente do d10 */
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

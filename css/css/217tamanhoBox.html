@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <!-- Entenderemos melhor como é calculado o tamanho 
+    da caixa. -->
+    <style>
+        body {
+            font-size: 45px;
+            margin: 0;
+        }
+
+        div {
+            background-color: deepskyblue;
+            /* Quando colocamos uma width de 100%, a largura
+            da tela acabará estourando de forma a 
+            podermos navergar + para direita / esquerda, isso
+            porque o 100% é o tamanho do conteúdo e não da 
+            caixa, já que a caixa leva em conta também o 
+            padding, o border e a margin. */
+            width: 100%;
+            height: 300px;
+            padding: 100px;
+            border: solid 20px;
+            /* No caso, está estrapolando a largura em 240
+            pixels, isso porque o padding left e right são
+            100px cada, e a borda na parte left e right + 20
+            px cada. Para trabalhar do jeito que queremos 
+            dimensionar certo, usamos a propriedade box-sizing
+            que pode receber os valores border-box quando
+            queremos que os padding, border e margin não 
+            interfiram no tamanho pré-definido com height e 
+            width, de forma que estes serão somados para dar 
+            o width e height desejado, e não incrementado como
+            foi o caso e que até estrapolou a largura do 
+            browser. O box-sizing pode receber também 
+            content-box como valor, que é o default, onde 
+            todo padding / margin / border será somado aos 
+            valores definidos do width e do height.*/
+            box-sizing: content-box;
+            box-sizing: border-box;
+            /* A mesma ideia vale para width e height absolutos,
+            se for usado o border-box, terá exatamente o valor 
+            de width e height definidos somando com padding 
+            margin e border, já o content-box que é o padrão, 
+            irá ter aquele tamanho definido, e além disso terá 
+            as dimensões aumentadas pelos 3. 
+            O box-sizing não é transferido por padrão, então o
+            colocar na tag body não adianta, para aplicar para 
+            todos os elementos, devemos estilizar todos os elementos
+            do CSS, usando o seletor que representa tudo, que é 
+            o *, o seletor universal.
+            */
+        }
+        /* Seletor universal: */
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>

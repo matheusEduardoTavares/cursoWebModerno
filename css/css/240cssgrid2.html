@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #02</title>
+    <style>
+        html,
+        body {
+            margin: 20px;
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border: solid 5px dodgerblue;
+            background: #fff;
+        }
+
+        body {
+            display: grid;
+            /* Podemos dar nome para cada linha, cada 
+            tracejado tanto que representa a coluna quanto
+            a própria linha: */
+            grid-template-columns: 
+            [inicio] 1fr 
+            [metade-1 meio-1] 1fr
+            [metade-2 meio-2] 1fr [fim];
+            /* A primeira linha se chama inicio, a segunda linha
+            tem 2 nomes: metade-1 e meio-1, a terceira linha 
+            tem 2 nomes: metade-2 e meio-2, e a última linha
+            se chama fim .  */
+            grid-template-rows: repeat(3, 1fr);
+
+            /* É possível aplicarmos gaps, fazer uma separação
+            entre as células diferentes.*/
+            grid-column-gap: 20px;
+            grid-row-gap: 20px;
+
+            /* Gap na row depois na colum com
+            shorthand property, então 50px nas linhas
+            e 10 nas colunas. */
+            grid-gap: 50px 10px;
+
+            /* Se o gap for igual tanto na row quanto
+            column, é só por uma dimensão: */
+            grid-gap: 10px;
+
+            gap: 10px;
+        }
+
+        .d1 {
+            grid-column-start: metade-2;
+            grid-column-end: fim;
+            /* Shorthand curt property: 
+            Vai da linha meio-1 até a linha fim*/
+            grid-column: meio-1 / fim;
+
+            /* A propriedade grid-area mexe tanto na 
+            coluna quanto na linha. */
+            grid-row: 1 / span 2;
+            /* row-start column-start row-end column-end.
+            A grid-area funciona assim: 
+            [início linha] / [início coluna] / [fim linha] /
+            [fim coluna];
+            Então nesse caso vai da linha 1 até a 3 devido ao
+            span 3, e vai da coluna meio-1 até a coluna fim. */
+            grid-area: 1 / meio-1 / span 3 / fim;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+</body>
+
+</html>

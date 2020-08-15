@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;
+        }
+
+        .flex-container {
+            display: flex;
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3) {
+            background-color: indianred;
+            /* Conseguimos manipular a ordem de um item
+            específico dentro de um flex-item. Para tal 
+            usamos o atributo order. Todos itens de um
+            flex container tem a ordem 0 por padrão, peso
+            0, quando colocamos order: 1, ele passa a 
+            ter 1 ordem maior que os outros. Os flex 
+            items com maiores ordens são colocados por 
+            último na sequência dos flex itens, portanto
+            nesse caso que temos 4 div, e estamos colocando
+            order 1 na div 3, ela será a última a ser
+            exibida, ficando na ordem: 1 2 4 3 .*/
+            order: 1;
+            order: 0; /* Voltando para order 0, a div 3 
+            passará a ter a mesma ordem dos outros 
+            elementos, aí será exibido de acordo com a 
+            ordem do HTML já que todos flex itens tem a 
+            mesma ordem.*/
+            /* Agora, se colocamos a order -1, será a 
+            menor ordem de todos, portanto será exibido 
+            por primeiro: 3 1 2 4 */
+            order: -1;
+            /* Para alinhar um determinado elemento 
+            específico, um determinado flex item, podemos
+            usar o align-self estilizando aquele determinado
+            elemento ou grupo de elementos: */
+            align-self: center; /*Centraliza*/
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch;
+        }
+
+        .flex-container div {
+            width: 100px;
+            /* Se temos um flex container com um dado espaço 
+            como nesse caso que tem 600 de largura, e as 
+            divs não ocupam sua linha inteira, significa que
+            tem um espaço sobrando e que pode ser ocupado. A
+            propriedade flew-grow define como vamos ocupar o 
+            espaço que está faltando.*/
+            flex-grow: 0;
+            flex-grow: 1;
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-grow: 2;
+        }
+
+        .flex-container {
+            width: 300px;
+            /* O flex-shrink faz a mesma coisa com a mesma
+            lógica do flex-grow, mas ao invés de aumentar o 
+            flex item(s), vai diminuir */
+            flex-shrink: 1;
+        }
+
+        .flex-container div:nth-child(1) {
+            flex-shrink: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="nolabel">1</div>
+        <div class="nolabel">2</div>
+        <div class="nolabel">3</div>
+        <div class="nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

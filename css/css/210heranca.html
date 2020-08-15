@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap" rel="stylesheet"> 
+    <style>
+        /* Herança no CSS advém do seu estilo em cascata,
+        em que certos atributos são transmitidos para outros
+        atributos via a relação que existe entre as tags.
+        Por exemplo a tag body é a tag mãe para os elementos
+        da página, assim como uma div pode ter elementos 
+        filhos. Quando aplicamos as propriedades para 
+        um determinado elemento, algumas dessas propriedades
+        são transmitidas por herança para as tags filhas, e
+        algumas não são por padrão mas que podemos explicitar
+        para que sejam herdadas pelos seus filhos. */
+        body {
+            font-family: 'Oswald', sans-serif;
+            font-size: 40px;
+            border: solid 3px red;
+            padding: 50px;
+            /* Nesse caso, mesmo sem estilizarmos o h1 e a 
+            div, a fonte é passada por herança para eles. Já
+            a borda não é passada, só o body possui borda.
+            O padding também não é passado por herança. */
+        }
+
+        div {
+            /* COm o inherit dizemos explicitamente para 
+            que a tag div herde da sua tag pai no caso 
+            um atributo que não é passado implicitamente,
+            que é a borda. */
+            border: inherit;
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="background-color: green;">Herança</h1>
+    <div>Estou herdando
+        <span>
+            <!-- A herança dos elementos default ocorrem 
+            até mesmo em descendentes, não necessariamente
+        apenas no filho. Caso queiramos herdar um atributo
+    que não é herdado implicitamente, usamos o valor 
+inherit para o atributo. Na prática inherit é pouco usado. -->
+            <p>Teste</p>
+        </span>
+    </div>
+</body>
+
+</html>

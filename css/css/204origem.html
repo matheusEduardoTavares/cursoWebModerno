@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Origem CSS: Externo, Interno e Inline</title>
+    <style>
+        /* Css INTERNO. Seletor do tipo elemento:*/
+        body {
+            background-color: aquamarine;
+        }
+    </style>
+  
+    <!-- Css EXTERNO: -->
+    <link rel="stylesheet" href="./css/externo.css">
+    <!-- Sem o rel="stylesheet" dentro da tag link não
+    é aplicado a formatação na página. 
+
+    Caso um mesmo elemento receba estilos que tratam 
+    atributos iguais mas com valores diferentes, o que
+    realmente será aplicado será o último a ser processado.
+    No caso da tag style e da tag link, como a tag link está
+    mais abaixo da tag style, será aplicado a estilização
+    do link. Se ele estivesse nas linhas acima do style, 
+    valeria o do style. Na verdade ambos são aplicados mas
+    se tiver um mesmo atributo de um mesmo seletor sendo 
+    alterado com valores diferentes, ficará o último que 
+    foi processado, o que está mais abaixo já que o arquivo
+    é lido de cima para baixo.
+    -->
+</head>
+
+<!-- Estilização In-Line, basta usar o atributo style
+dentro da tag: -->
+<body style="background-color:coral;">
+    <!-- Não é recomendável fazer estilização IN LINE. -->
+    <h1>E agora?</h1>
+</body>
+<!-- É comum utilizarmos estilização IN-LINE via código, 
+via JS, não diretamente indo no HTML e colocando. 
+O CSS inline tem um peso maior que os outros, então
+independente da ordem, é o CSS INLINE quem irá prezar. Mas
+como dito antes todos serão executados, só haverá 
+sobrescrição do valor se um mesmo seletor estiver 
+recebendo a estilização de um memso atributo e tal 
+atributo tem valor diferente.
+
+O ideal é usar CSS externo.-->
+</html>

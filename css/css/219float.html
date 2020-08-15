@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Float</title>
+    <style>
+        /* Hoje em dia o float não é a melhor solução de 
+        todas, e devemos utilizá-lo com cuidado sem exageros.
+         */
+        body {
+            background-color: #222;
+        }
+
+        .c1 {
+            background-color: red;
+            /* COlocando float somente aqui e com right, 
+            apenas a div com classe c1 vai para direita
+            enquanto o resto fica no block pois são divs sem
+            float. Se deixarmos só assim, os outros elementos
+            , já que apenas o c1 tem float, eles desconsideram
+            a flutuação do c1. Para a flutuação ser considerada
+            também nos outros elementos, pois do jeito que foi
+            ficou as 3 divs na esquerda em block, e a div 
+            c1 na direita na mesma linha que a div abaixo dela
+            pois a mesma é desconsiderada. Para considerá-la 
+            basta por clear:[flutuação que será considerada]
+            em quem queremos considerar.*/
+            float: right;
+        }
+
+        .c2 {
+            background-color: green;
+            clear: right;
+            float: left;
+        }
+        
+        .c3 {
+            background-color: blue;
+            clear: right;
+            clear: left;
+            clear: both;
+        }
+
+        .c4 {
+            background-color: orange;
+            float: right;
+        } 
+
+        div {
+            height: 150px;
+            width: 150px;
+            /* Usando float cada div para de ocupar uma 
+            única linha cada, e passam a ficar na mesma 
+            linha, sendo que uma div só vai para linha
+            de baixo caso não caiba na tela, e eles se 
+            deslocam para direita com o right, de forma
+            que a primeira div, c1, é quem estará mais para
+            direita, seguida da c2 e assim por diante. */
+            /* float: right; */
+            /* Com float left ocorre a mesma coisa mas vão
+            para esquerda, sendo o c1 o primeiro da esquerda,
+            aí o c2 e assim por diante. */
+            /* float: left; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        .fora {
+            position: relative;
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;
+        }
+
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%;
+            /* position: static; é o position padrão, quem
+            ocorre se não pormos nada */
+            position: static;
+            /* No caso, 100% da largura ocupa o espaço que
+            é dedicado ao conteúdo, é assim que funciona no
+            position static, ocupa o espaço do conteúdo. */
+            /* A position: relative; também usa o espaço 
+            do conteúdo. */
+            position: relative;
+            /* Mas com posição absolute, o 100% não representa
+            apenas o conteúdo, mas representa o conteúdo + o 
+            padding. Ele até respeita o padding, não irá 
+            começar da margem 0 da página, mas seu tamanho será
+            maior que apenas do conteúdo pois foi somado o 
+            tamanho do conteúdo + padding.*/
+            position: absolute;
+            /* A posição fixed; usa o tamanho do viewport. Então
+            ocupará 100% do tamanho do viewport. Ou seja, não 
+            tem mais haver com tamanho do conteúdo do elemento
+            pai, e sim com do viewport. */
+            position: fixed;
+            /* Tudo citado até o momento se deu porque a div
+            dentro está dentro da div fora que tem position 
+            relative, se ela tivesse position static, nesse caso
+            o position absolute seria o tamanho do viewport também. */
+        }
+    </style>
+</head>
+<body>
+    <div class="fora">
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>

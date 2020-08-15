@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Texto</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        /* ... */
+        * {
+            margin: 0;
+        }
+
+        html {
+            font-size: 28px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        div {
+            font-size: 50px;
+        }
+
+        p {
+            /* Valores padrões */
+            font-size: 1em;
+            font-size: 100%;
+            font-size: 16px; /*Tamanho de fonte padrão do
+            browser, mas que podemos mudar nas configurações*/
+            font-size: 12pt; /* 12pt equivale a 16 px */
+
+            /* Unidades absolutas */
+            font-size: 100px; /* Tamanho do px é relativo, 
+            depende da densidade da tela.*/
+            font-size: 72pt; /* 72pt é a mesma coisa que 1 
+            polegada*/
+            font-size: 1in; /* 1in = 1 polegada */
+
+            /* Em relação a fontes, o ideal é trabalharmos 
+            com medidas relativas para que possamos tornar o 
+            site mais acessível. O px é bem mais usado que o 
+            pt e o in, sendo que o in não faz parte d S.I, o 
+            sistema internacional de unidades, portanto é 
+            pouco usado.*/
+
+            /* Unidades relativas */
+            font-size: 2.2em;
+            font-size: 2.2rem; /*Pega a referência da font 
+            da tag html, e não do pai que no caso do p seria
+            a div.*/
+            font-size: 50vh;
+            font-size: 10vw;
+            /* Não costumamos usar o vh e o vw para tamanhos
+            de fonte. */
+            /* Fonte monospace todas as letras ocupam um
+            mesmo espaço. */
+            font-family: monospace;
+            /* Temos fontes serifadas, não serifadas e 
+            fontes cursivas. Se não achar a fonte 
+            Georgia, pega a fonte serifada padrão.*/
+            font-family: Georgia, serif; /* serifadas */
+            font-family: Verdana, sans-serif;/* sem serifa */
+            /* Fontes cursivas, parecidas com a forma que
+            escrevemos:*/
+            font-family: 'Indie Flower', cursive;
+
+            /* O peso da fonte pode ser valores pré-
+            definidos como bold ou bolder, ou pode ser 
+            valores numéricos de 100 a 900 */
+            font-weight: bold;
+            font-weight: 900; /*Negrito total*/
+            font-weight: 100; /* Sem negrito */
+
+            font-style: italic;
+            /* capitalize primeira letra maiúscula, 
+            uppercase tudo maiúsculo, lowercase tudo 
+            minúsculo */
+            text-transform: uppercase;
+
+            /* overline = linha em cima, underline = 
+            linha em baixo, line-through = linha no meio */
+            /* text-decoration: overline underline line-through; */
+
+            /* Separação entre as palavras */
+            word-spacing: 10px;
+
+            /* Separação entre as letras */
+            letter-spacing: 20px;
+
+            /* Altura da linha */
+            line-height: 2.5em;
+
+            /* ALinhamento do texto, o padrão se não 
+            usarmos o text-align é left. */
+            text-align: center;
+        }
+
+        /* Vamos transformar o link, que é a tag a, em 
+        um botão: */
+        .botao {
+            font-size: 28px;
+            /* Tirar o underline: */
+            text-decoration: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+        }
+
+        /* Na classe destaque é onde iremos por as cores
+        no botão */
+        .destaque {
+            color: #fff;
+            background: tomato;
+            box-shadow: 2px 2px 1px 1px #000;
+        }
+
+        /* A pseudo classe active é chamada enquanto o 
+        botão está pressionado */
+        .destaque:active {
+            box-shadow: none;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            Que texto
+            <br>legal!!!
+        </p>
+    </div>
+    <a href="http://google.com" class="botao destaque">Google</a>
+</body>
+
+</html>

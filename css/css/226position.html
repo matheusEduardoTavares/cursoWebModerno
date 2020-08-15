@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        div {
+            font-size: 60px;
+            padding: 30px;
+            border: solid 5px #222;
+            color: #fff;
+        }
+
+        .static {
+            /* Aqui, como não definimos position, por 
+            default ela é static. Quando temos uma 
+            position static, o top, right, left e bottom
+            não fazem nada, pois a posição é estática. Sua
+            dimensão e disposição será baseada na div em 
+            si e nos outros componentes da página. */
+            top: 100px;
+            left: 100px;
+            background-color: steelblue;
+        }
+
+        .fixed {
+            /* Quando a posição de um componente é fixa,
+            fixed, então ele irá ficar na posição em que
+            for definida e de maneira fixa, mesmo tendo
+            a barra de rolagem, ele não sairá da 
+            posição em que aparece. É comum encontrar 
+            ícones que fiquem fixo, sempre apareçam na tela
+            de maneira fixa independente da barra de rolagem. */
+            position: fixed;
+            bottom: 30px;
+            right: 0px;
+            background-color: tomato;
+        }
+
+        .relative1 {
+            /* O relative leva em consideração o elemento
+            anterior. O fixed sai da posição original, 
+            do local em que foi colocado na página para
+            ir onde foi definido, diferente do relative*/
+            position: relative;
+            left: 50px;
+            top: 5px;
+            /* Nesse caso, o relative leva em consideração
+            o elemento que está antes dele na tela para 
+            tomar o posicionamento que demos, então 
+            em relação a div que é estatítica, já que 
+            a div fixed está absoluta na página, fora de 
+            contexto, é tomado 50 px da esquerda e 5 
+            de cima */
+            background-color: seagreen;
+        }
+
+        .absolute1 {
+            /* Quando um elemento está com absolute, ele
+            passa por cima de qualquer outro elemento na
+            tela, e vai para posição que determinarmos com
+            base no viewport, nem considera a margin do
+            body. */
+            position: absolute;
+            left: 350px;
+            top: 120px;
+            background-color: violet;
+        }
+
+        .relative2 {
+            position: relative;
+            left: 250px;
+            top: 2000px;
+            width: 200px;
+            height: 200px;
+            background-color: slategrey;
+        }
+
+        /* Quando temos um elemento com position
+        absolute dentro de outro elemento com position
+        relative, o elemento com posição absoluto, ele
+        é absoluto levando em consideração o local em 
+        que ele está dentro, o elemento que é relativo, e
+        não o viewport. */
+        .absolute2 {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+        }
+
+        .sticky {
+            position: -webkit-sticky; /* Colocamos essa 
+            propriedade por causa do browser safari, que
+            não lê a propriedade css*/
+            position: sticky;
+            background-color: #777;
+            top: 0;
+            /* O sticky fica na posição atual ao qual 
+            ele foi declarado, onde ele está segundo 
+            os outros elementos e a forma que foi colocado,
+            mas quando descemos a página de forma que ele 
+            ia sair da tela, ele acaba parando no topo da
+            página e não desce mais, devido ao top 0. Se
+            fosse top: 10px; significaria que quando ele
+            chegar a 10 pixels do top em relação a página,
+            ele vai parar, não vai mais subir nem descer. É
+            interessante para páginas de vendas para sempre
+            deixar a caixinha para comprar aparecendo para o
+            usuário. */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="static">Static (Padrão)</div>
+    <div class="fixed">Fixed</div>
+    <div class="relative1">Relative</div>
+    <div class="absolute1">Absolute</div>
+
+    <div class="relative2">
+        <div class="absolute2"></div>
+    </div>
+
+    <div class="sticky">Sticky</div>
+    <p style="padding-bottom: 2000px;">Opa</p>
+</body>
+
+</html>

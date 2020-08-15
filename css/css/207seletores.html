@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Selectors</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        /* 
+        * {
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Estiliza todas tags HTML.
+
+        */
+        /* .tag {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Estiliza toda tag com classe 'tag'. */
+
+        /* #aprovados {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Estiliza a tag com ID 'aprovados' */
+
+        /* #aninhado > div {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Estiliza toda div que esteja dentro de uma tag 
+        com ID 'aninhado' */
+
+        /* #aninhado > section {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Nesse caso não estiliza ninguém pois a section 
+        é neto da tag com id aninhado e não filho, por isso
+        não é estilizado. */
+
+        /* #aninhado section {
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Agora dessa forma é section é estilizada pois assim
+        busca-se qualquer descendente da tag com id 
+        aninhado que seja uma section, e isso ocorre.*/
+
+        /* p + ul {
+            color: #ff0;
+            background-color: #f77;
+        }
+        O + é um seletor de tags adjacentes, um está do 
+        lado / abaixo do outro, então no caso, vai estilizar
+        a ul que tem um p antes. */
+
+        /* p + ol {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Ninguém é estilizado pois até temos o p e a ol, mas
+        eles não são adjacentes, não são vizinhos. */
+
+        /* p ~ ol {
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Assim a ol será estilizada pois vai estilizar todas
+        ol que tem um p como irmão, diferente do + não 
+        precisam estar lado a lado, só precisam ser irmãos.*/
+
+        /* [feira] {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Seletor de atributo, será estilizado qualquer tag
+        que tenha no caso o atributo feira. */
+
+        /* [feira=casa] {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Igual ao anterior, mas agora além da tag ter que 
+        ter o atributo feira, seu valor deve ser exatamente
+        casa, se tiver dois valores (valor1 valor2) ou seja
+        separados por espaço não irá pegar a tag, só pega
+        se for exatamente o valor do igual. */
+
+        /* [feira~=escritorio] {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Diferente do anterior, agora a ul será estilizada, 
+        isso porque ela tem o atributo feira, e devido ao 
+        ~= no lugar do = seu atributo deve ter PELO MENOS
+        um dos valores igual a escritorio, não precisa ser
+        exatamente escritorio como seria no caso do =, 
+        portanto a ul entra. */
+
+        /* [feira*=sa]{
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Assim as 2 ul são estilizadas pois no valor do 
+        atirbuto feira que está nessas tags, deve ter o 
+        conjunto de letras sa, que no caso de um é casa, 
+        então tem o sa, e no outro é escritorio empresa, 
+        que também tem o sa.*/
+
+        /* [feira*=asa] {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Assim apenas 1 ul é estilizada pois empresa não tem
+        asa. */
+
+        /* span:nth-child(1) {
+            color: #ff0;
+            background-color: #f77;
+        }
+        Estiliza uma tag span que seja filho de alguma tag,
+        mas que seja o filho número 1 dessa tag. Da forma
+        que está ninguém será estilizado pois em:active
+        <section class='tag'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+        </section>
+        O primeiro filho da tag section na verdade é um
+        label, que foi quem colocamos através do código
+        tag.js dentro da pasta js. Aqui não tem a questão do
+        índice iniciar em 0, começa em 1 a contagem dos filhos
+        então dentro da section o primeiro filho é a label, o
+        segundo filho é o span, o terceiro o p e o quarto o 
+        outro span. Logo, para selecionar o primeiro span, 
+        terá que ser o filho 2.
+        */
+        /* span:nth-child(2){
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Assim o span foi estilizado */
+
+        /* section > :nth-child(odd){
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Nessa caso é estilizado todo elemento que seja 
+        uma posição ímpar, por isso o odd, de filho de 
+        uma section. Nesse exemplo seria estilizado a label
+        e o p, pois a label é o filho 1, aí o span é o 2, o
+        p é o 3 que seria estilizado, e o outro span é o 4.*/
+
+        /* section > :nth-child(even){
+            color: #ff0;
+            background-color: #f77;
+        } 
+        Mesma ideia do código anterior, mas agora é 
+        somente para os filhos da section que estejam em 
+        posições PARES, por isso o even. Então será
+        estilizado os 2 span, que é a posição 2 e 4. 
+        
+        Esse padrão é interessante para uma tabela, em que
+        os ímpares tem uma cor e os pares outra.*/
+
+        /* section > :nth-child(even), ul{
+            color: #ff0;
+            background-color: #f77;
+        }
+        Será aplicado tanto para tags dentro de section 
+        que sejam filhas pares, quanto para ul, a vírgula
+        é o que permite mais de um seletor receber a
+        estilização que é passada. Pode por quantas tags
+        quiser:*/
+        /* section > :nth-child(even), ul, p{
+            color: #ff0;
+            background-color: #f77;
+        } */
+
+        /* section > :nth-child(even) label{
+            color: #ff0;
+            background-color: #f77;
+        }
+        Nesse caso quem recebe a formatação são os label que
+        são decendentes de qualquer tag que seja uma filha
+        com numeração par da section, que no caso é os 
+        labels do span, já que um span é 2 e outro é filho 4. */
+
+        /* section > span:nth-of-type(2){
+            color: #ff0;
+            background-color: #f77;
+        }
+        Aqui é estilizado o segundo span que é filho da 
+        section, ou seja, se há 5 spans dentro da section,
+        apenas o segundo será estilizado. SE houver apenas 1
+        ninguém é estilizado, e nesse caso que há 2, apenas o
+        segundo é estilizado. Ou seja, é estilizado o
+        segundo elemento do tipo span, e que seja filho da
+        section devido ao > .
+        
+        Há muitos outros seletores além desses. O ideal é 
+        sempre que tivermos que estilizar um elemento,
+        tentarmos fazer isso da forma + simples possível.*/
+
+    </style>
+</head>
+
+<body>
+    <div class='tag'>
+        <div class='tag'>
+            <p class='tag'>1</p>
+            <ul class='tag' feira='casa'>
+                <li>Arroz</li>
+                <li>Feijão</li>
+            </ul>
+            <ul class='tag' feira='escritorio empresa'>
+                <li>Café</li>
+                <li>Água</li>
+            </ul>
+            <ol id='aprovados' class='tag'>
+                <li>Maria</li>
+                <li>Pedro</li>
+                <li>Ana</li>
+            </ol>
+            <div id='aninhado' class='tag'>
+                <div class="tag">
+                    <section class='tag'>
+                        <span class='tag'>1</span>
+                        <p class='tag'>2</p>
+                        <span class='tag'>3</span>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        .unidades-absolutas {
+            /* A position absolute não tem haver com fato de
+            usar unidades absolutas, fizemos isso apenas para
+            posicionar nossa div de forma absoluta na tela. */
+            position: absolute;
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px; 
+            width: 4cm; /* Pouco usado */
+            height: 20mm; /* Pouco usado */
+            top: 150px;
+            left: 200px;
+            /* O top e o left só é levado em consideração
+            se a position for absolute, mas não tem haver
+            com as unidades absolutas. */
+        }
+
+        .unidades-relativas {
+            position: absolute;
+            font-size: 4em; /* 4x o tamanho da fonte da 
+            tag pai */
+            padding: 5%; /* Valores com % tem algumas 
+            peculiaridades que veremos na próxima aula */
+            border: solid 1vw #222;
+            margin: .8%;
+            width: 20vw;
+            height: 15vh;
+            bottom: 5%;
+            right: 5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

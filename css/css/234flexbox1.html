@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
+
+        .big {
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            /* 
+            Flex box é UNIDIMENSIONAL, tem um eixo 
+            principal para fazer o layout da caixa. Ou
+            selecionamos o layout de linha, row, ou o 
+            de coluna, column.
+            Só de colocar display flex já ocorrerá
+            algumas mudanças no layout, isso porque o 
+            main axis no caso será a row, o eixo X, 
+            pois por default o flex direction é row. 
+            As divs por default tem display block, mas
+            como estão dentro de uma div que tem 
+            display: flex, eles passam a ser flex items,
+            aí seguirão a lógica de distribuição imposta
+            pelo flex box.*/
+            display: flex;
+            /* Podemos mudar a direção : */
+            flex-direction: column;
+            /* Podemos usar o column-reverse também, 
+            que o main axis é o eixo Y, mas ele pega 
+            todos os flex items dentro dele e o inverte
+            de ordem, por exemplo, no HTML colocamos 
+            dentro da div que é o flex container 10 divs
+            dentro, do 1 até o 10. Se for apenas column,
+            irá ser mostrado em forma de coluna do 1 ao
+            10 que é a posição que estão no HTML. SE for
+            column-reverse, irá ser mostrado do 10 até o
+            1, ou seja, inverte a ordem que aparece 
+            dentro do HTML. */
+            flex-direction: column-reverse;
+            /* A mesma ideia para o row-reverse, mas com
+            main axis na linha, no eixo X:, além disso,
+            funcionará como um float right, dá direita
+            para a esquerda ao invés de a esquerda para
+            direita como é no column. */
+            flex-direction: row-reverse;
+            /* O flex-direction: row; é o padrão, o 
+            default */
+            flex-direction: row;
+            /* COlocando uma largura de 50%, o flex 
+            container que é a div em volta passa a 
+            ocupar 50% de espaço horizontal, e dependendo
+            do vw, o viewport width, se ele não estiver
+            muito grande, veremos que alguns flex items 
+            irão fazer um overflow no flex container, de
+            forma que seguem a mesma estilização e 
+            sentido, mas acabam sobressaindo ele e ficando
+            para fora. Podemos tratar esse overflow de 
+            algumas formas, por padrão ele simplesmente 
+            passa mas como o flex direction é row ele
+            se mantém na mesma linha, mas podemos definir 
+            para que a linha seja quebrada. */
+            width: 50%;
+            height: 200px;
+            /* Para tratar o overflow do flex container
+            usamos o flex-wrap, cujo valor wrap quebra
+            a linha se houver overflow. */
+            flex-wrap: wrap;
+            /* O wrap-reverse pega o que está no overflow
+            e no caso como o flex é row, eles trocam de
+            linha, o overflow vai para linha de cima enquanto
+            o conteúdo que não ultrapassou vai para d baixo. */
+            flex-wrap: wrap-reverse;
+            /* Podemos misturar a propriedade flex-
+            direction com a flex-wrap, que é a propriedade
+            flex-flow */
+            /* O flex-flow default é o row wrap, que é 
+            a direção em linha e o wrap para quebrar a 
+            linha */
+            flex-flow: row wrap;
+            /* Aqui fica em column reverse, e sempre que há
+            overflow quebra em colunas.*/
+            flex-flow: column-reverse wrap; /*Se fosse 
+            apenas column-reverse ocorreria overflow dos
+            elementos, ficaria um item em cima do outro 
+            pois não pode haver quebra de coluna e devido 
+            a ter um height fixo, de 200 px, acaba não 
+            cabendo tudo no flex container. Sem o wrap 
+            é a mesma coisa que por nowrap que é o 
+            default.*/
+            flex-flow: row wrap;
+            /* O flex-start como estamos trabalhando 
+            com main axis, os flex items serão
+            justificados de acordo com o main axis, em
+            que os elementos irão começar do início do 
+            flex container. */
+            justify-content: flex-start;
+            /* Se os flex items de uma dada linha ou 
+            coluna dependendo da direção, não ocuparem
+            aquela linha/coluna inteira, então esses
+            flex items irão começar do fim do flex
+            container. */
+            justify-content: flex-end;
+            /* Podemos centralizar os itens também: */
+            justify-content: center;
+            /* O space-around irá colocar espaço entre
+            os elementos, entre os flex itens que nçao
+            ocuparem a linha / coluna inteira. */
+            justify-content: space-around;
+            flex-direction: row-reverse;
+            /* O space between irá ter um espaço entre 
+            os flex itens, mas somente entre eles, não
+            haverá espaço nas pontas, nas bordas, como
+            ocorre no space around.*/
+            justify-content: space-between;
+
+            /* Todos os alinhamentos feitos até o 
+            momento foram no main axis, mas podemos 
+            fazer no cross axis também, utilizando o
+            align items: */
+            height: 400px;
+            /* O stretch é o default */
+            align-items: stretch;
+            /* O baseline irá alinhar pela baseline das
+            fontes de todos flex items, mesmo que cada
+            flex item tenha tamanho diferente, há uma
+            baseline entre eles, uma linha de base para
+            poder deixá-los bem centralizados uns aos
+            outros, mesmo que um flex item fique maior
+            que outro.*/
+            align-items: baseline;
+            /* Irá alinhar os elementos pelo início do
+            flex item */
+            align-items: flex-start;
+            /* Lembrando que agora estamos trabalhando
+            com o cross axis, então como a ddireção é
+            em linha, o alinhamento flex end deixará 
+            os itens alinhados na linha central com 
+            base na altura, então estarão no pixel 200
+            seu centro. */
+            align-items: flex-end;
+            /* O center centraliza */
+            align-items: center;
+
+            /* Quando temos + de 1 linha e direção 
+            horizontal, ou + de 1 coluna e direção 
+            vertical, podemos usar o align content: */
+            /* As linhas vão para o inicio do flex container */
+            align-content: flex-start;
+            /* As linhas vão para o fim do flex container */
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-around;
+            align-content: space-between;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel big">3</div>
+        <div class="tag nolabel">4</div>
+        <div class="tag nolabel">5</div>
+        <div class="tag nolabel">6</div>
+        <div class="tag nolabel">7</div>
+        <div class="tag nolabel">8</div>
+        <div class="tag nolabel">9</div>
+        <div class="tag nolabel">10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

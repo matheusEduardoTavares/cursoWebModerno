@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        body {
+            font-size: 40px;
+            background-color: coral;
+        }
+
+        div {
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+
+        span, div {
+            /* Como já vimos só a div será afetada pelo
+            width 50% pois seu display é block e portanto
+            sofre alteração, enquanto o span o display é 
+            inline e não sofre alteração. */
+            width: 50%;
+            /* Sabemos que o span não será afetado pelo 
+            height também, mas acaba que nem a div tem 
+            seu tamanho alterado pelo height 50%*/
+            height: 50%;
+            /* Agora ao colocarmos um height com valor 
+            absoluto, a div passará a ocupar exatamente 
+            essa altura, enquanto o span nunca é modificado. */
+            height: 250px;
+            /* Isso ocorre pois quando trabalhamos com 
+            porcentagem, trata-se de uma medida relativa. Essa
+            medida é relativa, o 50% é 50% do componente ao 
+            qual essa div pertence. A div está diretamente
+            dentro de body. Só há 2 elementos dentro do body, 
+            portanto sua altura é exatamente a soma da altura 
+            da div + a altura do span. Quando fazemos height
+            com valor absoluto de 250px na div, a altura do 
+            body passa a ser essa altura da div + a altura do 
+            span. Unidades absolutas fazem o body aumentar
+            de tamanho, assim como novas tags que sejam 
+            box, ou seja, visíveis, se colocadas de forma que
+            apareçam também aumenta o tamanho do body. Por
+            padrão o body já ocupa o espaço horizontal completo,
+            sem precisar de nada. 
+            Resumindo, por padrão o body ocupa a largura toda, 
+            mas não ocupa a altura toda.*/
+            /* Se colocarmos o height 50% mas com o body
+            com height de 100%, como fizemos abaixo, não irá
+            funcionar mesmo assim, pois assim o body irá ocupar
+            100% da tag html, já que o html por padrão não 
+            ocupa a altura toda, ocupa só oque está disposto
+            na tela. Ou seja, como o html não considera 100% da
+            altura do viewport (o viewport é o tamanho da tela
+            que aparece para o usuário), essa altura não é toda
+            considerada. Para resolver isso, temos que estilizar
+            a tag html colocando o height como 100% para height, 
+            e como todos os parents da div estão cm height de 100%,
+            então irá funcionar.*/
+            height: 50%;
+            /* display: inline-block; Se por o display 
+            inline block não acontece nada porque junta 
+            50% de width do span + 50% de width da div
+            e como uma tag está abaixo da outra soma o espaço
+            como vimos na aula passada, de forma que passa a 
+            largura e ele se mantém na linha debaixo. Agora
+            se por uma tag do lado da outra, ou seja, sem o 
+            pixel o espaço em branco, aí ficarão lado a lado. */
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        /* Em linhas gerais, quando trabalhamos com porcentagem
+        será considerado o tamanho dos parents, das tags 
+        pais dos elementos. Mas além disso outras coisas são 
+        levadas em consideração como o position, pois se for 
+        absolute é uma forma, fixed é outra, mas de forma geral
+        tamanhos em porcentagem tem haver com os parents. */
+    </style>
+</head>
+
+<body>
+    <div>Título</div>
+    <span>Subtítulo</span>
+</body>
+
+</html>

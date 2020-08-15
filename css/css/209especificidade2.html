@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://specificity.keegan.st/ */
+        /* 
+        1. Inline
+        2. ID
+        3. CLasse, Pseudo-Classe, atributo
+        4. ELemento, Pseudo-Elementos
+        */
+        body {
+            font-size: 40px;
+        }
+
+        div {
+            background-color: #00b;
+            color: #fff;
+        }
+
+        div[wm-cor] {
+            background-color: darkorange;
+        }
+
+        /* Se esse div:hover estiver antes do div[wm-cor]
+        não ocorre seu efeito pois pseudo classe tem o 
+        mesmo valor de atributo, e vale o que está por 
+        último, então se estiver em cima do div[wm-cor]
+        não ocorre, mas como no caso está abaixo, ele 
+        acaba funcionando. No caso do body que é só uma 
+        tag sua especificidade é menor então sempre vai 
+        ocorrer independente de onde estiver. */
+        div:hover {
+            background-color: purple;
+        }
+
+        /* Nesse caso o div:hover só será ativado 
+        em quem não tiver a class estilo pois ela o 
+        sobrescreve por estar por último já que ambos 
+        tem mesmo nível de especificidade. */
+        div.estilo {
+            background-color: green;
+        }
+
+        #unico1, #unico2 {
+            background-color: #000;
+        }
+
+        div:hover, #unico1:hover {
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="unico1" class="estilo" style="background-color: red;;">
+        #unico1 vs .estilo vs inline
+    </div>
+    <div id="unico2" class="estilo">#unico2 vs .estilo</div>
+    <div class="estilo" wm-cor>.estilo vs wm-cor</div>
+    <div wm-cor>wm-cor</div>
+    <div class="estilo">.estilo</div>
+    <div>elemento</div>
+</body>
+
+</html>

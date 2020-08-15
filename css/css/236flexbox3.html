@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        .flex-container {
+            display: flex;
+            /* flex-direction: column; */
+        }
+
+        .flex-container div {
+            /* flex-basis é a propriedade oficial para 
+            mostrar a largura de um determinado elemento
+            dentro de um flex container, a dimensão do
+            elemento. No caso da direção column é a altura
+            dos flex items, e no caso de row é a largura.
+            Ou seja, aplicamos o tamanho no main axis.*/
+            flex-basis: 100px;
+            /* Podemos utilizar também a width para 
+            definir o tamanho no caso de row e o height no
+            caso de column, mas o flex-basis é mais forte,
+            se o flex basis estiver presente, simplesmente
+            será desconsiderado o width e o height, mas 
+            se não estiver presente, será considerado o 
+            width ou o height. */
+            width: 200px;
+        }
+
+        .flex-container div:nth-child(4) {
+            /* Shorthand property em que definimos o 
+            grow, o shrink e o basis: */
+            flex: 3 6 100px;
+        }
+
+        .flex-container {
+            /* COm width 300 px será usado o shrink pois
+            irá faltar espaço do que sobrar. */
+            width: 300px;
+            /* Já com width 600 px será usado o grow pois
+            sobrará espaço */
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

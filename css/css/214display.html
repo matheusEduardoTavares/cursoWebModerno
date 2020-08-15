@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Display</title>
+    <style>
+        /* O display é muito importante pois com ele
+        podemos escolher trabalhar com flex-box, grid, e 
+        outras opções como o block, inline e inline-block que
+        veremos agora. */
+        body {
+            font-size: 40px;
+            color: #fff;
+            background-color: coral;
+        }
+
+        ul { padding: 0; }
+
+        div { background-color: seagreen; }
+
+        span { background-color: dodgerblue; }
+
+        li { background-color: purple; }
+
+        ul {
+            /* Para tirar o marcador de cada li, no caso da 
+            ul é o círculo. */
+            list-style: none;
+        }
+
+        div, span, li {
+            /* Valor relativo, os li e a div será afetado mas
+            os span não mudarão: */
+            width: 50%;
+            /* Valor absoluto, e ocorreou o mesmo efeito que
+            anteriormente. */
+            width: 200px;
+            /* Para height é a mesma ideia, as li e div são
+            afetadas mas o span não. */
+            height: 80px;
+            /* O padding top funcionará em todos. */
+            padding-top: 30px;
+            /* Por fim o text align só funcionará na li e div
+            também. */
+            text-align: center;
+
+            /* No caso da div, o display por padrão é block. 
+            No li o display padrão é list-item e no span é 
+            inline. Mudaremos todos eles para block, isso significa
+            que cada elemento terá sua própria linha. Ao colocar
+            para o span ir para display block, ele não só vai 
+            passar a ocupar cada span uma linha, como também será
+            afetado pelo width e pelo height. Sem os width cada 
+            tag irá ocupar a linha inteira a qual pertence.*/
+            display: block;
+            /* Com display inline eles irão começar a ficar na 
+            mesma linha. Ficará a div e os 2 span na primeira linha
+            enquanto os 3 li na linha debaixo pois o ul seu 
+            display default é o block também. Os width e height 
+            deixam de funcionar. Com display inline não conseguimos
+            definir altura e largura do componente, e o que será 
+            considerado é o padding. */
+            /* display: inline; */
+            /* Com o display inline-block, os componentes
+            se mantém na mesma linha, mas o height e o 
+            width passam a ser considerados. Esse display é
+            bem usado para card-views.*/
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div>Texto 1</div>
+    <span>Texto 2</span>
+    <span>Texto 3</span>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+
+</html>

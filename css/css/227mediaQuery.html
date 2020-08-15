@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        /* A partir da media query podemos trabalhar 
+        com a questão de responsividade. */
+        div {
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;
+        }
+
+        /* Se a largura do componente for no máximo
+        600 pixels de largura, a classe dentro da 
+        media será executada. */
+        @media (max-width: 600px) {
+            .muito-pequeno {
+                display: block;
+            }
+        }
+
+        /* Agora só será executado quando o tamanho for 
+        1000 pixels ou menos de largura, OI quando for 
+        orientação de portrait, retrato. */
+        /* Temos de orientação: 
+        orientation: portrait; retrato, que é em pé
+        orientation: landscape; paisagem, que é deitado.
+        Ou seja, a , é o ou */
+        @media (max-width: 1000px), (orientation: portrait) {
+            .pequeno-retrato {
+                display: block;
+            }
+        }
+
+        /* Intervalo de 500 a 1000 px, se estiver dentro
+        do intervalo a classe é ativada */
+        @media (min-width: 500px) and (max-width: 1000px) {
+            .intervalo { display: block; }
+        }
+
+        /* O media query não é a única forma de conseguirmos
+        responsividade, mas é uma forma que ajuda muito. */
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

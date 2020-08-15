@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /* 
+            Especificidade é qual estilização aplicada é 
+            quem vingará com base no seletor.
+            Em linhas gerais...
+
+            As estilizações que são as que prevalecem: 
+
+            1. regra com !important, passa por cima das 
+            outras especificidades e é quem é realmente 
+            executado, mas não é recomendado seu uso, gera
+            um ciclo vicioso.
+            2. seletores mais específicos, como inline
+            3. última regra processada (empate), ou seja, 
+            quando uma mesma área é estilizada por mais de 
+            um seletor ambos serão aplicados, e caso algum 
+            atributo tenha valor diferente em ambos, o que 
+            realmente será aplicado é o último, o que foi lido
+            por fim, o que está mais embaixo, a última regra
+            processada.
+
+            O seletor de classe é + específico que o 
+            seletor da tag, então no caso dos estilos abaixo
+            quem prevalece é o estilo do .observacao pois ele
+            é mais específico que o seletor do p.
+
+            Escala:
+
+            1. regra com !important
+
+            2. seletores mais específicos
+
+            3. última regra processada (empate)
+
+            Dentro de 2. seletores mais específicos, temos
+            essa ordem de especificidade:
+            1 - inline
+
+            2 - seletor de ID associado a TAG (p#id)
+
+            3 - seletor de ID (#id)
+
+            4 - seletor de Classe associada a TAG (p.classe)
+            ou atributo específico associado a TAG (p[atributo])
+            ou pseudo-classe (p:hover)
+
+            5 - seletor de Classe (.classe) ou 
+            atributo específico ([atributo])
+
+            6 - seletor de TAG (tag) ou pseudo-elementos
+            (p::first-letter)
+        */
+
+        p {
+            background-color: #aaa;
+        }
+
+        .observacao {
+            /* Nessa caso do !important não haverá
+            sobrescrição e quem irá prevalecer é o
+            background do p.observacao, pois o 
+            background-color é diferente do background, 
+            são entendidos como coisas diferentes, logo
+            não há sobrescrição e quem prevale é o
+            estilo do p.observacao. */
+            background-color: #5f5 !important;
+            border: dashed 5px;
+            /* Agora nesse caso o padding aplicado é o 
+            do .observacao pois é o mesmo atributo do 
+            p.observacao, e embora o .observacao tenha 
+            especificidade menor, já vimos que quem 
+            prevalece é sempre o !important */
+            padding: 200px !important;
+            font-size: 40px;
+        }
+
+        /* Classe associada ao parágrafo. */
+        p.observacao {
+            /* Se houver !important no padding daqui também
+            quem será aplicado é esse padding pois ambos são
+            importantes, então irá ver quem tem maior 
+            especificidade e esse ganha.*/
+            padding: 2px;
+            background: linear-gradient(to right, red, yellow);
+        }
+
+        /* Utilizar o !important em vários locais gera um
+        efeito cascata que não é recomendável. */
+        
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>
