@@ -1,0 +1,75 @@
+<!-- Vamos por cada imagem dentro de uma tag p, um 
+parágrafo para que cada imagem fique em uma linha e 
+depois vamos usar o fato de que as imagens estão dentro de
+um parágrafo para ajudar a selecionar as imagens para que 
+o slider funcione. -->
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da Cidade" width="513" height="342" title="Muro da Cidade por Tarso Bessa" />
+</p>
+
+<p>
+    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342" />
+</p>
+
+<p class="circular">
+    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342" />
+</p>
+
+<p class="texto">
+    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left" />
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu libero vitae turpis eleifend consectetur. Nunc sagittis hendrerit lacinia. Aenean at leo odio. Cras metus odio, suscipit sed velit eget, blandit ultrices ligula. Etiam laoreet id orci sodales accumsan. Ut pharetra ligula et eros commodo, vel tincidunt libero eleifend. 
+</p>
+
+<p class="cidade"></p>
+
+<p>
+    <picture>
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+        media ="(min-width: 600px)"/>
+        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo" />
+    </picture>
+    <!-- A tag picture, podemos por várias fontes, várias
+    imagens diferentes, e em cima dessas imagens podemos 
+    aplicar critérios para que essas imagens sejam exibidas
+    ou não. No caso da linha 27 e 28, a logo só será 
+    exibida se o tamanho for no mínimo 600 pixels. Abaixo
+de 600 pixels a imagem não será mostrada. FIzemos um
+media query para que essa imagem seja exibida se a medida
+for no mínimo 600 pixels. Caso seja menor que 600 ela vai
+para a de baixo, que é a imagem da linha 29. A ideia é,
+a primeira imagem encontrada na tag source cuja condição
+é atendida será a única a ser exibida. Caso nenhuma bata
+com a condição, será exibido a imagem que não está nas
+sources, então a propria img. Resumindo, é uma forma que
+temos para mostrar uma determinada imagem, a depender da
+condição. Se tiver um source sem a propriedade media, é 
+ela quem será exibida, e se uma imagem passar da condição
+mas não for encontrada, aparecerá seu alt no lugar. Será 
+exibida somente a imagem cuja condição for atendida primeiro
+. Podemos ter várias source dentro da picture. A img seria
+o else da condição.-->
+</p>
+
+<style>
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>

@@ -1,0 +1,35 @@
+<!--
+    Temos links de âncoras, que apontam para elementos na mesma
+    página, e temos links que apontam para emails. Por exempl
+    um link que automaticamente mande um email para uma pessoa.
+-->
+<p id="inicio">Início</p>
+<a href="mailto:mzodiaco2@hotmail.com">Entre em contato</a>
+<!-- Quando a pessoa clica no link acima é aberto um provedor
+de email para enviar o email para o seguinte contato que 
+colocamos, mas o usuário precisa ter um provedor de email
+configurado. -->
+<br /><br />
+
+<!-- Colocaremos um css inline, que é um css que colocamos
+dentro de uma tag diretamente através da propriedade style,
+mas isso não é uma boa prática, só é usado para manipular via
+JS uma tag, onde colocamos a propriedade na tag por meio do JS
+e não diretamente, mas de toda forma não é uma boa prática: -->
+
+<div id="noticia" style="position:absolute;top:2000px;">
+    <h1>Notícia Buemba!</h1>
+    <p>Não era nada KSKSKS</p>
+    <a href="#inicio">Ir para Início</a>
+</div>
+
+<a href="#noticia">Ir para Notícia</a>
+<!-- Mesmo o link estando abaixo da div, na tela ele 
+aparecerá em cima enquanto a div aparecerá lá em baixo, isso
+por que a div tem posição absoluta e um top muito alto, fazendo
+com que ela saía da ordem denominada.
+Chamamos esse tipo de link que vai para um determinado elemento
+da nossa página de âncora.
+
+Fazer uma submissão de uma âncora para o back-end, a informação
+da âncora é perdida, vai apenas a url.-->

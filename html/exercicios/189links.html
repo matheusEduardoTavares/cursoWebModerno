@@ -1,0 +1,43 @@
+<h1>Links</h1>
+
+<!-- URL Absoluta -->
+<a href="http://www.google.com.br">Google 1</a><br />
+<a href="https://www.google.com.br" target="_blank">Google 2</a>
+<!-- Em URL Absolutas, não podemos tirar o http:// pois aí 
+será entendido que é uma URL relativa, e vai tentar acessar
+o www.google.com.br dentro do nosso sistema, que no caso é
+o localhost, a url ficaria assim : 
+http://localhost:8080/www.google.com.br
+E mostraria que essa página não pode ser achada pois não a
+temos no nosso sistema.
+No caso do google e de grandes sites, não importa colocar 
+http ou https pois se acessarmos só por http ele mesmo 
+redireciona para o google com https.-->
+<br /><br />
+
+<!-- URL Relativa -->
+<a href="index.html">Voltar 1</a><br />
+<a href="/index.html">Voltar 2</a><br />
+<a href="../index.html">Voltar 3</a>
+<!-- No primeiro link, como em localhost:8080 já estamos no
+index.html quando clicar vai ficar na mesma página, mas se fosse
+outra página, iria para o index.html. Agora, se abrirmos em 
+localhost:8080/exercicios/links.html e clicarmos em voltar 1
+irá para uma página sem conteúdo, não existente, pois dentro
+da pasta exercicios não há arquivo index.html, diferente do 
+segundo link, pois o / faz com que vá primeiro para o raíz, 
+que é o localhost:8080 no caso, e a partir desse raíz ele 
+procura o index.html, e o encontrará, tanto direto pelo 
+localhost:8080 quanto através do /exercicios/links.html . 
+Por fim o último link funciona em todos os casos, até em :
+localhost:8080/exercicios/links.html , pois ele volta uma 
+pasta e tenta entrar em index.html. Se já estiver em 
+localhost:8080 já estamos na pasta onde está o index.html, logo
+se tentarmos voltar a pasta, ele irá se manter no mesmo 
+diretório, já que o raíz é o localhost:8080, que é onde está 
+sendo executado o http server. Como executamos o http server
+pela pasta html, o raíz será a pasta html e não poderemos ver
+nenhuma pasta externa a do html, só as pastas internas e a 
+própria pasta html, então se tentamos voltar uma pasta já
+estando dentro da pasta html, do raíz, ele se manterá neste
+mesmo diretório. -->

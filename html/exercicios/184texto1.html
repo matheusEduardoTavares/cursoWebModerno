@@ -1,0 +1,54 @@
+<!--
+    Podemos passar parâmetros no comando para executar o 
+servidor através do http server para evitar que seja feito
+cache dos dados, pois isso pode gerar problema às vezes, basta
+colocarmos a flag:
+-c-1 
+Assim o cache será mantido por 1 segundo apenas.
+O comando que executaremos daqui para frente é:
+http-server . -c-1 -a localhost -p 8080
+-->
+
+<!-- Cabeçalhos -->
+<h1>Cabeçalho Principal</h1>
+<h2>Cabeçalho de Nível 2</h2>
+<h3>Cabeçalho de Nível 3</h3>
+<h4>Cabeçalho de Nível 4</h4>
+<h5>Cabeçalho de Nível 5</h5>
+<h6>Cabeçalho de Nível 6</h6>
+
+<!-- Parágrafo -->
+<p>
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit.
+
+
+    Nunc interdum vestibulum ex vitae tincidunt. Nulla vel elit pellentesque, condimentum sem nec, imperdiet sem. Cras molestie sit amet est sed consectetur. Cras id viverra libero. Praesent dictum tellus sed dapibus luctus. 
+</p>
+
+<p>
+    Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit.
+    Nunc interdum vestibulum ex vitae tincidunt. Nulla vel elit pellentesque, condimentum sem nec, imperdiet sem. Cras molestie sit amet est sed consectetur. Cras id viverra libero. Praesent dictum tellus sed dapibus luctus. 
+</p>
+
+<!-- Negrito e Itálico -->
+<p>Texto em <b>Negrito</b> e <i>Itálico</i>.</p>
+
+<!-- Sobrescrito e Subscrito -->
+<p>2<sup>2</sup> = 4 e H<sub>2</sub>O = Água!</p>
+
+<!-- Espaço em branco -->
+<p>Espaço                entre          
+    
+    palavras</p>
+
+<p>Espaço &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; entre palavras</p>
+<!-- Na prática acabamos nem usando muito o &nbsp para fazer
+o espaço, e sim utilizamos um span e o estilizamos com CSS:-->
+<p>Espaço <span class="espaco">entre</span> palavras</p>
+<style>
+    span.espaco{
+        padding-left: 30px;
+    }
+</style>

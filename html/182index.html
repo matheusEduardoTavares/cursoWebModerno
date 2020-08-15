@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios HTML</title>
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <!-- Se deixarmos o link normal assim:
+     <a href="exercicios/174teste.html">00 - Teste</a>
+    irá perder toda página, irá sair da página index e ir 
+    para a página de 174teste.html e não é isso que queremos.
+    Queremos que quando clicar no link seja feito uma 
+    requisição ajax, pegue o conteúdo e jogue dentro da div
+    ou da section com id conteudo. Veremos ajax depois para
+    entender melhor, mas faremos por enquanto o exercício.
+    No 174teste.html percebemos que não temos uma estrutura
+    de página html mesmo, temos só um h1, que é o conteúdo que
+    queremos que apareça dentro da section com id conteudo.
+    -->
+    <nav>
+        <a href="exercicios/173teste.html">00 - Teste</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        <br />
+        Curso de Web Moderno
+    </footer>
+    <!-- Para fazer essa parte do ajax, primeiro criamos a
+    tag script, interceptamos o clique do usuário no link, para
+    que quando o usuário clicar nós interceptemos o clique, 
+    já que um evento é gerado, e façamos o que queremos e 
+não deixar o browser fazer o que ele quer.
+Para tal, pegamos todos as tags de link através do query
+selector all que tem como resultado um array e então percorremos
+o array com for each onde o parâmetro link representa cada
+tag. Para cada tag, setamos o onclick para receber uma função
+de modo que quando clicamos no link a função é chamada, sendo
+o parâmetro e o evento de clique. Para impedir que o browser
+direcione para outra página, usamos o e.preventDefault() em que
+o comportamento esperado do browser será prevenido para não
+ocorrer, portanto, não trocará de página.
+Agora a ação que queremos que ocorra nesse evento é que 
+seja feito uma requisição ajax , pegue o conteúdo da página e
+jogue o conteúdo para dentro da seção relativa ao conteúdo.
+-->
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            const conteudo = document.getElementById('conteudo')
+
+            link.onclick = function (e) {
+                e.preventDefault()
+                //Para fazer a requisição ajax utilizamos fetch,
+                //uma função + recente, baseado em promise, em que
+                //fazemos uma requisição ajax sem precisar d 
+                //bibliotecas. A requisição é feita para o atributo
+                //href do link.
+                fetch(link.href)
+                    .then(resp => resp.text())
+                    .then(html => conteudo.innerHTML = html)
+                // poderíamos usar a função get
+                //atribute também.
+                /*No then, temos como retorno o conteúdo do arquivo
+                que está no parâmetro resp, e o que nos importa 
+                desse conteúdo é seu texto, que é o conteúdo html
+                da página que fizemos a requisição. O resultado de 
+                resp.text() é uma promise também, e só aí que temos
+                acesso ao valor textual do html que foi carregado 
+                a partir dessa requisição. Esse valor textual é o que
+                podemos jogar dentro de conteudo, pois é o html do 
+                outro arquivo. Como o resultado de resp.text é outra
+                promise, usamos o then para pegar seu retorno que 
+                este será agora o html.*/
+            }
+        })
+    </script>
+</body>
+</html>

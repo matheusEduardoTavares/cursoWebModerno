@@ -1,0 +1,59 @@
+<h1>Texto (Parte 2)</h1>
+
+<!-- Quebra de LInha e Quebra Temática -->
+<p>Isso está <br>em uma <br /> nova linha.</p>
+<p>Tema interessante 1</p>
+<hr />
+<p>Tema interessante 2</p>
+
+<!-- Marcações semânticas -->
+<p><strong>Cuidado!</strong> Alta Voltagem! <em>Somente pessoal autorizado.</em></p>
+<!-- Semânticamente, a tag b para negrito e a i para itálico
+não valem de nada, só servem como estilo. Já o strong para 
+negrito tem um significado semântico considerável: que é o
+de importância, algo forte, para chamar atenção. Já a 
+tag em é para dar ênfase a algo, visualmente põe em itálico,
+e semanticamente é importante para enfatizar algo.
+
+A tag blockquote é uma citação longa, e o atributo cite referencia
+o link do site onde estamos fazendo a citação.
+-->
+<blockquote cite="https://en.wikipedia.org/wiki/Wikipedia"><p>Citações longas...</p></blockquote>
+
+<!-- Tem uma extensão do VScode chamada preview que se 
+apertarmos CTRL + shift + v temos um preview da página que 
+está sendo criada.
+Temos citação curta também que é a tag q, inclusive o conteúdo
+dentro dela já é colocado aspas duplas automaticamente.
+-->
+<p>Fulano disse que <q>tempor incididunt ut labore et dolore</q></p>
+
+<!-- Outras tags -->
+<p>
+    <abbr title="Professor">Prof</abbr> Fulano em seu livro
+    <cite>Livro bem Legal</cite> definiu mais precisamente... blá.
+</p>
+<p><dfn>Buraco Negro</dfn> é a região do espaço que...</p>
+<address>
+    <p>Rua ABC, n<sup>o</sup> 123...</p>
+</address>
+<p>O Oscar vai para <del>La La Land</del> <ins>Moonlight</ins></p>
+<p>Computador de <s>R$ 2.249,90</s> por R$ 1799,00.</p>
+<!--
+    abbr: abreviação
+
+    cite: não é recomendável por nome de pessoas, e sim de obras,
+    é uma tag para citar uma obra.
+
+    dfn: para introduzir dentro de um texto uma definição
+    address: para colocar um endereço
+
+    del + ins: quando vamos fazer uma alteração no texto,
+    por exemplo uma 
+    parte do texto deixou de ser verdadeira, aí colocamos a antiga
+    e uma nova para sabermos o que foi inserido e o que foi excluído
+    de um determinado texto para deixar aquilo explícito.
+    
+    s: para colocar trechos que não são válidos, deixamos explícito
+    que aquilo já não faz mais juz a informação.
+ -->

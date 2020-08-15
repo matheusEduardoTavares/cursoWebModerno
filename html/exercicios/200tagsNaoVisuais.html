@@ -1,0 +1,58 @@
+<h1>Tags Não Visuais</h1>
+
+<!-- 
+Algumas tags não visuais semânticas:
+
+section: Visa colocar uma seção dentro do documento HTML,
+é como se fosse um texto dividido em seções. É um 
+agrupamento temático dentro do conteúdo.
+
+article: Semântica de algo auto-contido. Tudo que está
+dentro do artigo não está tão relacionado com o conteúdo
+que está em volta. Tem um começo meio e fim dentro de si.
+
+header: cabeçalho do documento
+
+footer: rodapé do documento
+
+nav: agrupa os links de navegação
+
+aside: de lado (ex: sidebar). Serve também para fazer
+um adendo. Temos um certo trecho, parágraof, queremos 
+fazer uma observação, adendo em cima disso podemos usar
+o aside. Relacionado com o conteúdo em volta (adendo)
+
+details: Ex: temos um certo produtos e quando clicamos 
+nele mostra os detalhes. Portanto exibe detalhes que podem
+ser exibidos ou escondidos.
+
+As Famosas...
+
+div: Divisão ou seção, por default vem com display block.
+span: Usado apra agrupar elementos inline. Mas via CSS
+podemos mudar o comportamento dos 2.
+ -->
+
+<div>Área 1</div>
+<div>Área 2</div>
+
+<p>
+    Esse é um texto com <span class="diferente">muitas palavras</span> e ponto.
+</p>
+
+<style>
+    div{
+        /* COm isso as div passa a ficar na mesma linha: */
+        display: inline;
+    }
+
+    span {
+        display: block;   
+    }
+
+    .diferente {
+        font-weight: bold;
+        font-size: 30px;
+        color: chocolate;
+    }
+</style>

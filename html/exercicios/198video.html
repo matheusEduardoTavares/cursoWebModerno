@@ -1,0 +1,86 @@
+<!--
+    É interessante não colocarmos o 
+    src direto na tag video pois com o
+    source dentro dessa tag, caso algum
+    browser tente abrir o vídeo e não
+    consiga, por exemplo porque não 
+    entende o formato, aí o próximo 
+    source será testado e será colocado
+    aquele que funcionar primeiro. SE 
+    não suportar nenhum, então é
+    interessante pormos um texto dentro
+    da tag vídeo para notificar o 
+    usuário que não foi possível exibir
+    o vídeo.
+-->
+
+<!-- 
+<video id="meuVideo">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4" />
+    Seu browser não suporta a tag de 
+    vídeo.
+</video> 
+Se deixarmos como está da linha 18 a 22
+irá aparecer um vídeo que não tem as
+opções de controle e gigante devido
+sua resolução. Para resolver isso,
+fazemos:
+-->
+<!-- Com o width e height controlamos
+sua largura e altura, e com o controls 
+os constrolers do vídeo irão aparecer.
+O autoplay faz com que no momento que é aberto a página
+que contem o vídeo, este já inicia automaticamente.-->
+<!-- 
+<video id="meuVideo" width="800" height="450" controls autoplay>
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4" />
+    Seu browser não suporta a tag de 
+    vídeo.
+</video>  -->
+<!-- O problema dessa forma é que só
+pondo controls, em alguns browsers 
+aparece a opção do usuário baixar o 
+vídeo, e caso não apareça, dá para
+pessoa dar botão direito e salvá lo
+como. Para evitar isso podemos
+passar a propriedade:
+controlsList="nodownload" -->
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4" />
+    Seu browser não suporta a tag de 
+    vídeo.
+</video> 
+<!-- Mas isso ainda não impede o botão direito e salvar
+vídeo como. -->
+
+<!-- Essa div representa a barra de progresso, sendo o
+wm-progresso seu valor o ID do vídeo que queremos ver o
+progresso. A div de fora representa o processo como um
+todo, e a div de dentro é quem preenche a barrinha com
+1 cor de progresso.-->
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: white;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+</style>

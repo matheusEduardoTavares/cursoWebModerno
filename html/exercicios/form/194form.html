@@ -1,0 +1,76 @@
+<h1>Formulário</h1>
+
+<!-- Caso a partir de um mesmo formulário queiramos reusar
+o formulário tanto para incluir quanto para alterar. Para
+tal, podemos ter um botão para cara coisa, mas como a form 
+já tem uma determinada action e um determinado method, para
+conseguir reaproveitar o mesmo form, basta colocarmos 
+a action no botão. A propriedade do botão que faz
+isso é o formaction. Aí tiramos a action do form e trabalhamos
+apenas com a formaction. E para trocar o method de um botão
+temos a propriedade formmethod .
+
+Se mudarmos o method do form de POST para GET, verificamos que
+todos os parâmetros são passados na URL da requisição, em forma
+de QUERY PARAMS. Se quisermos ter acesso então a esses
+parâmetros em um form com get, tequeremos que pegar o 
+request.query, e não mais o request.body que é para o POST.
+Mas para formulários usamos o POST que o GET. A vantagem do 
+get é que quando submetemos os dados, temos uma URL que podemos
+reutilizá la em outros locais, replicá-las, já no POST não. Mas
+o get para armazenar os dados de um usuário em um BD por exemplo
+é um erro absurdo por questões de segurança já que a senha 
+ficaria visível na URL.-->
+
+<form method="POST">
+    <!-- Supondo que precisamos de um route params que mostra
+    o ID de um usuário que quer alterar seu cadastro, então 
+para sabermos qual é esse ID que será passado no cabeçalho, 
+qual é o route params, temos para tal um input escondido, hidden.
+É muito comum quando trabalhamos com back end junto. O value 
+desse input podemos adicioná-lo via JS mesmo .-->
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome"/>
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo"> Ativo
+    </div>
+
+    <select name="estado">
+        <option>Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+    </select>
+    <select name="interesses" multiple size="7">
+        <option value="js">Js</option>
+        <option value="java">Java</option>
+        <option value="php">Php</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="c">C</option>
+    </select>
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+    <!-- Para tratar mais buttons, no 185server.js vamos alterar
+    um pouco o código. 
+-->
+</form>
+
+<style>
+    input, textarea, select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio], input[type=checkbox]{
+        display: inline;
+    }
+
+</style>

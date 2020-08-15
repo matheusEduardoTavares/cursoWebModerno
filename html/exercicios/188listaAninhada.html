@@ -1,0 +1,61 @@
+<h1>Projeto</h1>
+
+<ul class="tree">
+    <li>
+        <span wm-folder>backend</span>
+        <ul>
+            <li>
+                <span wm-folder>app</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span wm-folder>config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span wm-folder>frontend</span>
+        <ul>
+            <li>
+                <span wm-folder>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(folder => {
+        folder.onclick = function(e){
+            //podemos utilizar o debugador dentro do browser
+            //basta por debugger e manusear no browser:
+            //debugger
+            const ul = folder.nextElementSibling
+            //console.log(ul) // imprime as ul
+            //O nextElementSibling é o elemento que vem depois
+            //do qual está selecionado, então no caso vão ser
+            //as ul.
+            const d = ul.style.display
+            ul.style.display = d === 'none' ? 'block' : 'none'
+            //basicamente na constante d adicionamos o valor do
+            //display da ul. Se ele for none significa que não
+            //vai aparecer na tela, então deve passar a ser
+            //block para aparecer. Se ele for block, vai passar
+            //a ser none, sumindo então da tela.
+        }
+    })
+</script>

@@ -1,0 +1,83 @@
+<table>
+    <!-- O caption é uma tag pouco usada, mas serve para 
+    mostrar o que a tabela representa.
+    Na tabela temos 3 áreas: cabeçalho, corpo e rodapé.-->
+    <caption>Produtos</caption>
+    <!-- O thead é opcional também, mas é interessante colocá-lo
+    por causa de semântica. A tr é uma linha, e a td é uma 
+    coluna. Para cada coluna da tabela, teremos uma thead.
+    O tbody é o corpo da tabela, onde de fato estarão os dados.
+    Como dito, o thead e o tbody, sem eles funciona, mas são
+    importantes por causa de semântica. Se a tabela tiver um
+    rodapé é interessante por o tfoot também.-->
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>iPad</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>16445,00</td>
+        </tr>
+        <tr>
+            <td>Sansung S9</td>
+            <td>2649,00</td>
+            <td>8</td>
+            <td>21192,00</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <!-- <tr>
+            <td colspan="3" rowspan="2">
+                Total
+            </td>
+            <td>
+                37637,00
+            </td>
+        </tr>
+        <tr>
+            <td>Teste</td>
+        </tr> -->
+        <tr>
+            <td colspan="3">
+                Total
+            </td>
+            <td>
+                37637,00
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+        /* O border collapse com valor collapse define que 
+        não há borda externa. */
+    }
+
+    th, td{
+        padding: 10px;
+    }
+
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+
+    tbody tr:hover{
+        background-color: #dedede;
+    }
+
+    tfoot {
+        background-color: #444;
+        color: #fff;
+        font-weight: bold;
+    }
+
+</style>

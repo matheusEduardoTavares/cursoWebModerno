@@ -1,0 +1,40 @@
+<!--
+    Abriremos a pasta do curso (CURSO_WEB_MODERNO_UDEMY) no
+    terminal e digitaremos o seguinte comando:
+    npm install -g http-server
+    Aí criamos o arquivo index.html dentro da pasta html.
+    Criamos a pasta exercicios dentro da pasta html
+    Criamos o arquivo 174teste.html dentro da pasta 
+    html/exercicios
+    e montamos o código que está dentro de teste.html e dentro
+    de index.html.
+
+    Agora sempre que formos testar os arquivos HTML não 
+    precisamos abrir ele clicando em seu arquivo, basta
+    executarmos no terminal dentro da pasta html:
+
+    http-server .
+
+    Será startado na porta 8080 a aplicação. Se quisermos
+    executar em outra porta basta executar:
+
+    http-server -p [porta] .
+    exemplo:
+    http-server -p 9090 .
+
+    Às vezes algumas alterações que fazemos acabam não 
+    sendo refletidas na página devido a questão de cache.
+    Para resolver isso, basta fazer: 
+
+    http-server . -c-1 -a localhost -p 8080
+
+
+    IGNORAR:
+    ---
+    http-server . -c-1
+
+    Para encerrar uma porta que não seja a 8080 que é a 
+    padrão:
+    fuser -k [porta]/tcp
+    ---
+-->

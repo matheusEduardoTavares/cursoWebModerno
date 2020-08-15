@@ -1,0 +1,136 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da Cidade" width="513" height="342" title="Muro da Cidade por Tarso Bessa" />
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342" />
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342" />
+    </p>
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left" />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu libero vitae turpis eleifend consectetur. Nunc sagittis hendrerit lacinia. Aenean at leo odio. Cras metus odio, suscipit sed velit eget, blandit ultrices ligula. Etiam laoreet id orci sodales accumsan. Ut pharetra ligula et eros commodo, vel tincidunt libero eleifend. 
+    </p>
+    
+    <p class="cidade"></p>
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media ="(min-width: 600px)"/>
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo" />
+        </picture>
+    </p>
+    
+</div>
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    function mover(elem, inicio, fim, passo, callback){
+        const novoInicio = inicio - passo
+        if (novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        }
+        else {
+            callback()
+        }
+    }
+
+    function slider(){
+        /*O querySelectorAll retorna um nodeList, não tem as
+        mesmas propriedades que um array mas é parecido. Mas
+        podemos transformá-lo em um array através do método
+        Array.from. Usaremos essa função para transformar o 
+        node list em um array.*/
+        const elementos = document.querySelectorAll('[wm-slider] > p')
+        const slides = Array.from(elementos)
+        //slides é um array que contém todos os p.
+        exibirSlide(slides, slides[0])
+    }
+
+    function exibirSlide(slides, slide) {
+        /* É uma função recursiva para que no final da exibição
+        de um slide, outro seja invocado. Quando o movimento de
+        um determinado slide acabar, quem é responsável por 
+        avisar seu término é a callback, que será executada nesse
+        momento. Aqui dentro chamamos a função mover. O 
+        início do movimento é o tamanho da tela atual, que 
+        pode ser obtida com innerWidth. A largura de uma 
+        determinada tag pode ser obtida com o clientWidth*/
+        slide.style.display = 'block'
+        const inicio = innerWidth
+        const fim = -slide.clientWidth
+        //Resumindo, o movimento começa a partir da largura da
+        //página que está na constante início, aí o slide vai
+        //navegando até menos a largura da tag p, ou seja, vai
+        //do início da tag p que se inicia na largura da tela, 
+        //e vai até sair da tag p, que é representado por menos
+        //ela, ou seja, é como se desse a volta por ela.
+
+        //Aqui é onde o slide irá iniciar na tela:
+        slide.style.left = `${inicio}px`
+
+        //E com a função mover vamos fazer o slide ser
+        //movimentado.
+        mover(slide, inicio, fim, 5, () => {
+            //Quando terminar o movimento, queremos que seja 
+            //chamado o próximo slide, que será definido em cima
+            //de outra função. Criaremos uma função que define o
+            //próximo slide.
+            /*É importante fazer isso pois, queremos que o 
+            array seja percorrido infinitamente, percorre inteiro
+            1 vez, aí volta do índice 1 percorre de novo e por aí
+            vai. Portanto quando essa callback for chamada é que
+            um slide terminou seu movimento, basta fazermos então
+            aqui dentro uma chamada recursiva para exibirSlide. Mas
+            primeiro temos que tornar o slide que já percorreu a 
+            tela invisível, embora como ele está fora da tela não
+            faria diferença.*/
+            slide.style.display = 'none'
+            exibirSlide(slides, getProximo(slides, slide))
+        })
+
+        function getProximo(lista, atual) {
+            const i = lista.indexOf(atual) + 1
+            return i < lista.length ? lista[i] : lista[0]
+        }
+    }
+
+    slider()
+    //por fim é só chamar a função slider pois é ela quem 
+    //starta todo o processo.
+
+</script>

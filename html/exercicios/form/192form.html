@@ -1,0 +1,14 @@
+<!--
+    O ideal é colocarmos o arquivo server.js que representa 
+    o servidor fora da pasta form, em uma pasta onde não possa
+    ser acessado pelo browser por questões de segurança, mas 
+    só por estudo faremos assim, para ver os dados do 
+    formulário saindo da página e chegando no backend.
+-->
+
+<h1>Formulário</h1>
+
+<form action="http://localhost:3003/usuarios" method="POST">
+    <input type="text" name="nome"/>
+    <button>Incluir</button>
+</form>

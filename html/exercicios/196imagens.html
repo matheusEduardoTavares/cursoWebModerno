@@ -1,0 +1,104 @@
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="Muro da Cidade" width="513" height="342" title="Muro da Cidade por Tarso Bessa" />
+    </p>
+    
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342" />
+    </p>
+    
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342" />
+    </p>
+    
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left" />
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam eu libero vitae turpis eleifend consectetur. Nunc sagittis hendrerit lacinia. Aenean at leo odio. Cras metus odio, suscipit sed velit eget, blandit ultrices ligula. Etiam laoreet id orci sodales accumsan. Ut pharetra ligula et eros commodo, vel tincidunt libero eleifend. 
+    </p>
+    
+    <p class="cidade"></p>
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media ="(min-width: 600px)"/>
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo" />
+        </picture>
+    </p>
+    
+</div>
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    // const tags = document.getElementsByTagName('p')
+    // let val = 1
+    // for (let tag in tags){
+    //     console.log(val++)
+    //     tags[tag].style.display = 'block'
+    //     tags[tag].style.left = 100
+    //     setTimeout(() => {
+    //         tags[tag].style.left = 300
+    //     }, 1500)
+    //     setTimeout(() => {
+    //         tags[tag].style.display = 'none'
+    //     }, 1500)
+    // }
+
+    // const tags = document.getElementsByTagName('p')
+    // tags[0].style.display = 'block'
+    // tags[0].style.left = 100
+    // setTimeout(() => {
+    //     tags[0].style.left = 300
+    // }, 1500)
+    // setTimeout(() => {
+    //     tags[0].style.display = 'none'
+    // }, 1500)
+
+    function mover(elem, inicio, fim, passo, callback){
+        const novoInicio = inicio - passo
+        if (novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)
+        }
+        else {
+            callback()
+        }
+    }
+
+    //tag p que está dentro de im elemento com atributo 
+    //wm-slider
+    const p = document.querySelector('[wm-slider] > p')
+    p.style.display = 'block'
+    mover(p, 1500, -520, 5, () => {
+        console.log('Terminou')
+    })
+    
+</script>

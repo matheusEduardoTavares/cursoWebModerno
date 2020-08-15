@@ -1,0 +1,82 @@
+<h1>Formulário</h1>
+
+<form action="http://localhost:3003/usuarios" method="POST">
+    <input type="text" name="nome"/>
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular
+        <input type="radio" name="tipo" value="professor"> Professor
+        <!-- Para o input radio, na hora que o usuário clicar
+        no botão de enviar, o que será enviado dependendo do
+        input selecionado é o value do input que foi escolhido.
+    Se nenhum for sleecionado, sua chave nem vai para o backend. -->
+    </div>
+    <div>
+        <input type="checkbox" name="ativo"> Ativo
+        <!-- Se esse checkbox for marcado, irá vir como 
+        ativo: 'on' , pois colocamos no checkbox o name ativo,
+        que será a chave, e on porque foi marcado. Se não for
+        marcado o checkbox, não vem a chave ativo nem seu valor. -->
+    </div>
+
+    <select name="estado">
+        <option>Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+        <!-- No caso o resultado da opção marcada virá para o 
+        backend somente o valor, marcando o name do select como
+        chave, e como valor o que está no value. NO caso do 
+        primeiro option que não tem value, é a label quem vem
+    como valor, então se ficar selecionado a primeira opção, 
+um exemplo de execução em marcar o checkbox e deixando a primeira
+opção desse select marcado é :
+{ nome: 'a', senha: 'b', bio: 'c', tipo: 'admin', estado: 'Selecione' }
+Por isso o ideal ao invés de ter um option sem value como o 
+Selecione, é fazer isso:
+ <option value="">Selecione</option> 
+ Pois deixando o value vazio virá estado: '', sendo uma string
+ vazia sabendo q o usuário selecionou nada.
+-->
+    </select>
+
+    <!-- Podemos ter um select de múltiplas opções, colocando
+    o atributo multiple, o size são quantas opções serão 
+exibidas. Se for menor que o número de option, só vai mostrar
+a quantidade qu se encaixar no size e o resto será acessado 
+a partir da barra de rolagem do select. Se o size for maior que
+o número de opções ficam espaços vazios no select.-->
+    <select name="interesses" multiple size="7">
+        <option value="js">Js</option>
+        <option value="java">Java</option>
+        <option value="php">Php</option>
+        <option value="python">Python</option>
+        <option value="go">Go</option>
+        <option value="c">C</option>
+        <!-- O resultado que vem para o backend é que: se for
+        selecionado + de 1, vem em forma de array. Se for um
+        só, vem apenas um valor sem array, e se nenhum for
+        selecionado, nem vem a chave interesses. -->
+    </select>
+
+    <!-- O ideal é tratarmos dessa forma essas opções e se algum
+    input, ou algum dado for preciso ser passado, devemos tratar
+    de forma que o formulário só é enviado se o usuário digitar
+certo. -->
+
+    <button>Incluir</button>
+</form>
+
+<style>
+    input, textarea, select {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type=radio], input[type=checkbox]{
+        display: inline;
+    }
+
+</style>

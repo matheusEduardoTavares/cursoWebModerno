@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Um pouco de CSS</title>
+        <style>
+            h1{
+                font-size: 20px;
+            }
+
+            .fundoVermelho {
+                /*
+                background-color: rgb(255, 0, 0);
+                */
+                background-color: #f00;
+            }
+
+            .negrito {
+                font-weight: bold;
+            }
+
+        </style>
+        <link rel="stylesheet" type="text/css" href="172poucoDeCss.css" />
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <!-- Não é recomendável mas podemos por o estilo CSS
+        direto na tag html, por meio da propriedade style-->
+        <span id="textoPrincipal" style="color: blue;">Texto 1</span><br /><br /><br />
+        <!-- O span abaixo possui 2 classes, pois estão 
+        separadas por espaço-->
+        <span class="fundoVermelho negrito">Texto 2</span><br />
+        <br /><span class="fundoVermelho" wm-atrib>Texto 3</span>
+        <!--
+            O wm-atrib seria um atributo personalizado que nós
+            mesmos criaríamos para atribuir uma determinada 
+            formatação nas tags em que colocássemos esse atributo.
+            Através do console do browser podemos ter acesso a todas
+            tags que contém esse atributo a partir do comando:
+            document.querySelectorAll('[wm-atrib]')
+            Ou acessar só a primeira tag que tem esse atributo:
+            document.querySelector('[wm-atrib]')
+            Na verdade até dá para usar esses atributos para fazer
+            estilo, mas é mais utilizado para termos acesso a
+            partir do JS e fazer algum tipo de trabalho.
+            O ideal é: Usarmos classes / id para estilização, 
+            e se precisarmos encontrar determinadas tags que devem
+            pertencer a um dado grupo, utilizamos esses atributos
+            personalizados.
+        -->
+    </body>
+</html>
