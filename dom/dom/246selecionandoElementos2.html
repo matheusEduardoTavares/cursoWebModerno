@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        // O querySelector ou o querySelectorAll diferente dos document.getElements...
+        // retornarm um nodeList, e não um HTMLCollection. O nodeList podemos usar um
+        // forEach para o iterar sem precisar converter para array. Mas outras 
+        // funções do array não estão presentes no nodeList, como o map, reduce, filter
+        // e etc, aí para usar uma delas seria necesário converter o nodeList para um
+        // array, com o spread ou com o Array.from() .
+
+        const selecionar = seletor => document.querySelectorAll(seletor)
+        .forEach(e => e.classList.add('destaque'))
+
+        const deselecionar = seletor => document.querySelectorAll(seletor)
+        .forEach(e => e.classList.remove('destaque'))
+
+        selecionar('div')
+
+        deselecionar('*')
+
+        // Classe terceiro e ultimo ao mesmo tempo, na mesma tag (a ordem não importa):
+        selecionar('.terceiro.ultimo')
+        deselecionar('.terceiro.ultimo2')
+
+        deselecionar('*')
+
+        // O :not é uma pseudo classe e passamos como argumento para ela o queremos
+        //que seja negado. No caso, todo mundo que não tem o ID primeiro é selecionado:
+        selecionar(':not(#primeiro)')
+
+        deselecionar('*')
+
+        // Com o comando abaixo será selecionado a div com id primeiro e o span com 
+        // atributo wb-attrib , isso porque ambos são o primeiro filho de alguma dada
+        // tag, no caso a div é a primeira filha do body, e o span é a primeira 
+        // filha da div com classe terceiro e também com classe ultimo.
+        selecionar(':nth-child(1)')
+
+        deselecionar('*')
+
+        // Primeiro elemento do tipo div, ou seja, a primeira div que aparece no 
+        // código:
+        selecionar('div:nth-of-type(1)')
+
+        deselecionar('*')
+
+        selecionar('[wb-attrib]')
+    </script>
+</body>
+</html>

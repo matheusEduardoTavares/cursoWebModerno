@@ -15,7 +15,7 @@
         const divs = document.getElementsByTagName('div')
         Array.from(divs).forEach(e => e.classList.remove('destaque'))
 
-        // Também transforma um nodeList em um array, assim como o Array.from :
+        // Também transforma um HTMLCollection em um array, assim como o Array.from :
         const divsArray = [...divs]
         divsArray.forEach(e => e.classList.add('destaque'))
 
