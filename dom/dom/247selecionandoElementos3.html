@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        // O document.forms vai trazer um HTMLCollection com todos os formulários dentro
+        //da página.
+        console.log(document.forms)
+
+        // O HTMLCollection suporta a sintaxe dos arrays, então podemos usar os 
+        //colchetes para acessar um dado formulário da página.
+        console.log(document.forms[0])
+
+        // Retorna um nodeList : 
+        console.log(document.getElementsByName('pesquisa'))
+
+        // Retorna um HTML collection :
+        console.log(document.getElementsByTagName('form'))
+
+        // Procura o elemento que tem o name pesquisa:
+        console.log(document.pesquisa)
+
+        // Pega a tag que tem o name q que está dentro de uma tag com o name pesquisa:
+        console.log(document.pesquisa.q)
+
+        document.pesquisa.q.value = 'Linux'
+
+        document.pesquisa.hl.value = 'en-us'
+
+        // Índice selecionado na consulta: Se estiver selecionado a option com 
+        //value pt-br será 0, e se for a option com en-us será 1:
+        console.log(document.pesquisa.hl.selectedIndex)
+    </script>
+</body>
+
+</html>
