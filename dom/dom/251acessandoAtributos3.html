@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('#compras')
+
+        // Somente para leitura dos atributos, não dá
+        //para modificá-los dessa forma:
+        console.log(lista.attributes)
+        // É retornado um NamedNodeMap , em que é possível
+        //acessar os atributos usando a notação de objeto
+        //ou de array, pois os atributos são colocados 
+        //dentro de um array em que o primeiro atributo
+        //encontrado está na posição 0 e assim por diante.
+        //ou ainda podemos usar a notação . ou de [] para
+        //pegar aquele atributo específico pelo seu nome:
+        console.log(lista.attributes[0]) //id="compras"
+        console.log(lista.attributes.destino) //destino="escritório"
+        console.log(lista.attributes['data-urgencia']) //data-urgencia="5"
+        // No JS o hífen (-) representa o menos, então 
+        //não podemos usá-lo na notação ponto que dará
+        //erro. Já na notação
+        //de colchetes passamos uma string, aí precisa ter
+        //o hífen.
+        // Dessa forma só com a notação ponto não dá
+        //para acessar os atributos data:
+        console.log(lista.attributes.urgencia) //undefined
+
+        //Essa notação serve também para propriedades 
+        //já conhecidas pelo html, ou seja, não 
+        //personalizadas:
+        console.log(lista.attributes.id)
+
+        // Não funciona, pois não é possível
+        //alterar a DOM usando o attributes:
+        lista.attributes.destino = 'casa'
+        console.log(lista.attributes.destino) //destino="escritório"
+
+    </script>
+</body>
+
+</html>
