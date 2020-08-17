@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log(){
+            console.log(this)
+        }
+
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        // O parentNode retorna o elemento pai do 
+        //elemento.
+        lista.parentNode.log()
+
+        // childNodes retorna todos os filhos da tag.
+        // No caso, irá retornar um NodeLIst com 7 
+        //elementos dentro: text, li, text, li, text, li
+        // text . Ou seja, até os textos que ficam dentro
+        //da tag são considerados filhos. Isso ocorre pois
+        //na verdade os textos não são considerados filhos,
+        //mas como temos um li em baixo do outro (separados
+        //no caso por um enter, mas um espaço também já dá
+        //esse mesmo efeito) acaba sendo separados em 
+        //textos também. Se fosse:
+        // <ul><li>Pedro</li><li>Ana</li><li>Bia</li></ul>
+        // ou seja, tudo um ao lado do outro, traria apenas
+        //3 li dentro do NodeList, sem os text. Esse é um
+        //dos efeitos do childNodes.
+        lista.childNodes.log()
+
+        // Primeiro filho de uma tag. O resultado
+        //será também um text.
+        const primeiro = lista.firstChild 
+        primeiro.log()
+
+        // Próximo elemento em relação a dada tag:
+        primeiro.nextSibling.log()
+
+        // Último filho de uma tag:
+        const ultimo = lista.lastChild
+        ultimo.log()
+
+        // Elemento anterior de uma data tag:
+        ultimo.previousSibling.log()
+
+        // Outra forma de pegar todos os filhos de uma
+        //tag, de forma que seja desconsiderado os 
+        //text independente da forma como foi montado
+        //o HTML, é o children. Outra diferença é que 
+        //no childNodes vem como nodeList, já no children
+        //vem como HTMLCollection:
+        lista.children.log()
+        // Os métodos daqui para baixo não há como 
+        //retornar text, todos trabalham apenas com as
+        //tags HTML:
+        lista.firstElementChild.log()
+        lista.lastElementChild.log()
+        lista.parentNode.previousElementSibling.log()
+        lista.parentNode.nextElementSibling.log()
+
+        // O querySelector e o querySelectorAll só 
+        //traz elementos HTML também, não tem perigo
+        //de vir text e é uma estratégia mais direta
+        //e melhor para trabalhar com DOM.
+        document.querySelectorAll('div ul li').log()
+    </script>
+</body>
+
+</html>
