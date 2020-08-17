@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        // Pegar a lista de classes:
+        const div = document.querySelector('div') 
+        // const classes = document.querySelector('div').classList
+        const classes = div.classList
+
+        classes.add('destaque')
+        classes.remove('destaque')
+        // A função toggle é alternância: Se uma data 
+        //classe já estiver na TAG, ela a remove. Se não
+        //estiver, ela a adiciona.
+        classes.toggle('destaque')
+
+        console.log(classes.contains('destaque')) //true
+
+        // Quantidade de classes que uma TAG tem:
+        console.log(classes.length) // 1
+
+        classes.toggle('destaque')
+        console.log(classes.length) // 0
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+        console.log(classes.length) // 2
+
+        for (let c of classes) {
+            console.log(c)
+        }
+        // Resultado do for:
+        // destaque1
+        // destaque2
+
+        // Ou seja, conseguimos iterar o classList,
+        //pois o mesmo é um DOMTokenList e este tem
+        //um iterator associado por isso é possível
+        //usar um for. O forEach está disponível para
+        //esse DOMTokenList também:
+
+        classes.forEach(c => console.log(c))
+        // Resultado do forEach:
+        // destaque1
+        // destaque2
+
+        // Já o DOMTokenList não tem map, reduce, 
+        //filter e etc... mas podemos transformar em
+        //array como já vimos com spread ou método from
+        //do Array:
+        console.log(Array.from(classes)) //Array [ "destaque1", "destaque2" ]
+        console.log(typeof Array.from(classes)) //object
+    </script>
+</body>
+
+</html>
