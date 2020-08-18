@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector('body')
+
+        const div1 = document.createElement('div')
+        div1.classList.add('destaque')
+        div1.innerHTML = 'Primeiro'
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo', 'valor')
+
+        div2.innerHTML = 'Segundo'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+
+        const div3 = document.createElement('div')
+        // O método appendChild insere o elemento 
+        //passado como parâmetro como o último filho
+        //do elemento que chamar esse método.
+        div3.appendChild(p)
+
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+        // Quando queremos inserir um text em um 
+        //elemento usamos o método createTextNode.
+        // O método insertBefore adiciona um novo 
+        //elemento ou text em uma dada posição que 
+        //especificarmos. Então se oclocarmos 
+        //div3.childNodes[0] será inserido tal 
+        //text/element antes do elemento 0, portanto
+        //ficará como primeiro filho.
+        const texto = document.createTextNode('Antes...')
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        // Podemos clonar um elemento / text com o 
+        //método cloneNode passando como parâmetro
+        //para ele true ou false. O true faz com que
+        //seja copiado tanto o dado elemento quanto
+        //todos os seus filhos. Se for false será 
+        //copiado somente o elemento, sem os seus 
+        //filhos.
+        const div4 = div3.cloneNode(true)
+        body.appendChild(div4)
+
+        // Para remover um nó da nossa DOM basta
+        //usar o método removeChild:
+        body.removeChild(div3)
+    </script>
+</body>
+
+</html>
