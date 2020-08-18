@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <!-- Precisamos passar o event como parâmetro, 
+        não pode ser um nome qualquer, pois só com event
+        o HTML saberá que deve passar o evento padrão
+        daquela tag quando clicada para a função. -->
+        <!-- <a href="https://google.com.br" onclick="navegarEm5s(event)">Google</a> -->
+        <!-- A vantagem de ter o onclick diretamente
+        dentro da tag é que fica muito explícito para
+    quem lê o código que ali há um tratamento no click
+do link que chamará uma função. A desvantagem é que
+de forma hard coded, de forma física escrever isso 
+diretamente no link, o que não é interessante pois 
+teremos o HTML com todos os eventos chamando as 
+funções manualmente de forma que não separamos bem
+o HTML do JS. -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        function navegarEm5s (e) {
+            e.preventDefault()
+
+            // target é o elemento HTML que 
+            //disparou o evento, então pegamos seu 
+            //href e trocamos de página passando o 
+            //valor desse href para o window.location
+            //.href que é o comando responsável por 
+            //fazer trocar de página.
+            //Logo, e.target.link = https://google.com.br
+            console.log('Saindo em 5s...')
+            setTimeout(() => {
+                const link = e.target
+                window.location.href = link.href 
+            }, 5000)
+        }
+
+        // Outra forma de adicionarmos algum evento
+        //para uma dada tag é manipulando a DOM:
+        // const a = document.querySelector('a')
+        // a.onclick = navegarEm5s
+        /*
+        Dessa forma não precisamos colocar direto na
+        tag o evento. Entretanto, só de olhar para a
+        tag não dá para saber que o evento daquela
+        tag está sendo manipulado. Essa estratégia
+        resolve o problema mas deixa a manipulação do
+        elemento de forma muito implícita. Por isso é
+        interessante usarmos atributos personalizados,
+        pois na tag fica implícito que algum evento está
+        sendo manipulado nela e no JS que fazemos essa
+        ligação da tag com o evento, de forma que separamos
+        os 2. Ao ver um atributo personalizado 
+        pressupomos que algum JS irá ler isso, pois
+        um atributo personalizado é completamente
+        ignorado pelo browser, não será renderizado,
+        nem aplicado algo pelo browser por padrão.
+        */
+
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s
+    </script>
+</body>
