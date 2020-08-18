@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #04</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="en-us">Inglês (Americano)</option>
+            </select>
+        <button wm-submit>Pesquisar</button>
+    </form>
+    <script>
+        // Podemos previnir o evento de envio do 
+        //formulário ou dando um preventDefault no
+        //evento onsubmit do form ou no onclick do 
+        //button.
+        const submit = document.querySelector('[wm-submit]')
+        submit.onclick = function (e) {
+            e.preventDefault()
+
+            //Podemos obter os dados do formulário a partir
+            //do formData. O e.target é o button, e o 
+            //e.target.parentNode é quem está envolvendo o
+            //botão, seu pai, no caso o form;
+            const form = e.target.parentNode
+            const formData = new FormData(form)
+
+            // Adicionando uma nova informação no 
+            //formData:
+            formData.append('ajax', true)
+
+            // Obtendo os dados do formData:
+            console.log(formData.get('q'))
+            // O resultado desse console.log da linha
+            //54 é o que estava digitado no input que
+            //tem o name "q" . Se não for digitado nada
+            //vem uma empty string. 
+
+            // Verificando se um campo está contido:
+            console.log(formData.has('hl')) // true
+            //Dá true pois dentro do form temos o campo
+            //hl , que é o select com name hl.
+
+            //O formData tem um iterator associado a ele:
+            for (let dado of formData) {
+                console.log(dado)
+            }
+            //Resultado do console log do for, sendo
+            //que no input digitamos teste e no 
+            //select deixamos o option com value 
+            //pt-br:
+            // Array [ "q", "teste" ]
+            // Array [ "hl", "pt-br" ]
+            // Array [ "ajax", "true" ]
+
+        }
+
+        //Mesmo exemplo mas agora com o evento de 
+        //onsubmit (podemos usar o querySelector)
+        //ou o document.forms[0] pois só há um form:
+        const form = document.forms[0]
+        form.onsubmit = function (e) {
+            e.preventDefault()
+
+            //O e.target passa a ser o form:
+            const form = e.target
+            const formData = new FormData(form)
+            formData.append('ajax', true)
+            console.log(formData.get('q'))
+            console.log(formData.has('hl')) // true
+
+            for (let dado of formData) {
+                console.log(dado)
+            }
+        }
+
+        // Dá o mesmo resultado.
+
+    </script>
+</body>
