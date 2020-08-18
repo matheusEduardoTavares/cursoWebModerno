@@ -1,0 +1,106 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+        // Veremos um exemplo simples de como fazer
+        //um elemento drag and drop
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item, index) => {
+            // A propriedade draggable permite um 
+            //elemento html ser arrastado
+            item.draggable = true
+
+            item.id = item.id || `draggable-item-${index}`
+
+            // O evento ondragstart é acionado sempre
+            //que o elemento começar a ser arrastado.
+            // Aí ele seta no atributo dataTransfer do
+            //evento um conjunto chave valor com a chave item-id
+            //e valor o ID daquele elemento.
+            item.ondragstart = e => e.dataTransfer.setData('item-id', e.target.id)
+
+            // Áreas em que podemos arrastar os 
+            //componentes: 
+            const dropzones = document.querySelectorAll('[wm-dropzone]')
+            dropzones.forEach(dropzone => {
+                // O evento ondragover ocorre quando o 
+                //usuário solta o item que acabou de arrastar.
+                // Previnimos seu comportamento para fazermos
+                //o que queremos e não o padrão
+                dropzone.ondragover = e => e.preventDefault()
+
+                dropzone.ondrop = function (e) {
+                    // Aqui pegamos o ID do elemento que foi 
+                    //solto depois de ser arrastado
+                    const id = e.dataTransfer.getData('item-id')
+
+                    // Nesse caso, o e.target é o local em que
+                    //estamos soltando o elemento, então temos
+                    //que adicionar o elemento dentro desse
+                    //local.
+                    const item = document.getElementById(id)
+                    
+                    // Fazendo apenas assim dá um 
+                    //problema em que um item numa
+                    //mesma zona pode ser arrastado e soltado 
+                    //um dentro do outro. Só podemos por os 
+                    //elementos dentro da zona quje é possível
+                    //então não damos um append no e.target, e
+                    //sim na dropzone
+                    // e.target.appendChild(item)
+                    dropzone.appendChild(item)
+
+                    // Quando damos um appendChild em um elemento
+                    //ele deixa de ser filho do elemento que 
+                    //estava e passa a ser filho do local em que
+                    //ele foi adicionado, pois ele é único.
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>
