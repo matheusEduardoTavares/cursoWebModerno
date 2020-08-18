@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        // Tira a tag p que está dentro da div e
+        //adiciona dentro dela apenas um text:
+        div.innerHTML = 'Texto Alterado'
+
+        // O outerHTML substitui não apenas o que
+        //está dentro da TAG, mas substitui a tag em
+        //si pelo que está sendo passado para ele,
+        //portanto a div que tinha um text dentro 
+        //passa a virar apenas um text:
+        // div.outerHTML = 'Texto Alterado'
+
+        // Inserindo um elemento/text antes de 
+        //começar uma certa tag HTML, no caso, a 
+        //DIV : 
+        div.insertAdjacentHTML('beforebegin'
+        , '<p>Antes Início</p>') 
+
+        // Inserindo um elemento/text depois de 
+        //começar uma certa tag HTML, no caso a DIV,
+        //de forma que seja inserido dentro da div,
+        //na primeira posição, primeiro filho da div:
+        div.insertAdjacentHTML('afterbegin', 
+        '<p>Depois Início</p>')
+
+        // Antes do fim de um dado elemento, como 
+        //último filho da tag:
+        div.insertAdjacentHTML('beforeend', 
+        '<p>Antes Fim</p>')
+
+        // Adicionar um elemento logo após a tag, 
+        //após o fim da tag:
+        div.insertAdjacentHTML('afterend', 
+        '<p>Depois Fim</p>')
+
+        // O atributo innerText dá apenas o text de
+        //um determinado elemento:
+        console.log(div.innerHTML) // mostra as tags
+        //dentro da div
+        //Resultado:
+        // <p>Depois Início</p>Texto Alterado<p>Antes Fim</p>
+
+        console.log(div.innerText) // mostra os texts
+        //dentro da div
+        // Resultado:
+        // Depois Início
+
+        // Texto Alterado
+
+        // Antes Fim
+    </script>
+</body>
+
+</html>
