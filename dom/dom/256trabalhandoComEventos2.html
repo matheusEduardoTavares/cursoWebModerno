@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+
+        item.onmousemove = e => {
+            const item = e.target
+            item.style.cursor = 'move'
+            // O e.buttons mostra se está clicado ou não na
+            //tag. Se estiver clicado, então retorna um valor
+            //diferente de 0. Se não estiver clicado retorna
+            //0 que é false.
+            if (e.buttons) {
+                console.log('e.clientY', e.clientY)
+                console.log('item.clientHeight', item.clientHeight)
+                e.target.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                e.target.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>
