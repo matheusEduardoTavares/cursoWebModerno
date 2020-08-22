@@ -78,4 +78,14 @@ app.post('/upload', (request, response) => {
     })
 })
 
+app.post('/formulario', (req, res) => {
+    // Aqui precisamos do body parser para ele 
+    //interpretar os dados obtidos da requisição lá
+    //no frontend.
+    return res.send({
+        ...req.body,
+        id: 7
+    })
+})
+
 app.listen(8080, () => console.log('Executando...'))
