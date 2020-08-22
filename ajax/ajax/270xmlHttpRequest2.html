@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <!-- O name arquivo foi o mesmo nome que colocamos
+    no singleton lá no multer do serve.js -->
+    <input type="file" name="arquivo" />
+    <div class="progresso"></div>
+
+    <script>
+        function ajaxUpload(config) {
+            const xhr = new XMLHttpRequest()
+
+            if (xhr.upload) {
+                // Controlar progresso do upload
+                xhr.upload.onprogress = e => {
+                    const atual = e.loaded 
+                    const total = e.total 
+                    const percentual = Math.floor(atual / total * 100)
+                    config.progresso({ atual, total, percentual })
+                }
+
+                xhr.open('post', config.url, true)
+                // O formData é recebido porque estamos fazendo
+                //um post, enviando informações para o servidor
+                xhr.send(config.formData)
+            }
+        }
+
+        //Temos que chamar a função ajaxUpload 
+        //exatamente no momento que o usuário
+        //selecionar o arquivo no input:
+
+        document.querySelector('input[type=file]')
+        .onchange = e => {
+            const formData = new FormData()
+            //e.target é o input, e o .name é o name que é 
+            //arquivo, o name da tag.
+            //O files[0] se dá pois ao selecionar um arquivo
+            //vem um array com todos os arquivos selecionados
+            //e como selecionamos apenas um, pegamos o primeiro
+            const inputFile = e.target
+            formData.append(inputFile.name, inputFile.files[0])
+
+            ajaxUpload({
+                // A url é o recurso que colocamos no 
+                //server.js
+                url: 'upload',
+                formData,
+                progresso (dados) {
+                    const progresso = document.querySelector('.progresso')
+                    progresso.innerHTML = JSON.stringify(dados)
+                }  
+            })
+        }
+    </script>
+</body>

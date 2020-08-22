@@ -25,4 +25,57 @@ app.use(bodyParser.json())
 
 //Por padrão é mostrado o index.html
 
+// Agora iremos fazer um exemplo de upload usando o
+//XMLHttpRequest, então começaremos importando o 
+//multer que instalamos via npm, e ele servirá para
+//interpretar o formulário que veio o arquivo do 
+//upload:
+
+const multer = require('multer')
+
+// Configuração que não seria necessária, mas que é
+//muito usada:
+//a função diskStorage recebe um objeto oque serve
+//para configurar, personalizar tanto a pasta que 
+//vamos salvar os arquivos, como também serve para
+//personalizar o nome do arquivo no momento de salvar
+//ele.
+//No caso de upload de arquivos, não é comum salvarmos
+//os arquivos dentro do banco de dados, e sim dentro
+//de pastas e mudamos o nome desse arquivo para não
+//ter problema de ter 2 arquivos com mesmo nome, pois
+//um pode sobrescrever o outro. Para evitar esse 
+//problema pode ser colocado a data atual como 
+//prefixo do arquivo.
+const storage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        // O segundo parâmetro é onde iremos querer
+        //armazenar o arquivo que no caso será na
+        //pasta upload.
+        callback(null, './upload')
+    },
+    // filename é a função chamada no momento que 
+    //será escolhido o nome do arquivo, sendo o 
+    //segundo parâmetro o nome dado no arquivo.
+    filename: function (req, file, callback) {
+        callback(null, `${Date.now()}_${file.originalname}`)
+    }
+})
+
+//O upload é quem irá interpretar o upload que vai
+//vir a partir da requisição via AJAX lá no servidor.
+//arquivo é o nome de como virá o arquivo quando
+//for feito o upload.
+const upload = multer({ storage }).single('arquivo')
+
+app.post('/upload', (request, response) => {
+    upload(request, response, err => {
+        if (err){
+            return response.end('Ocorreu um erro.')
+        }
+
+        response.end('Concluído com sucesso.')
+    })
+})
+
 app.listen(8080, () => console.log('Executando...'))
