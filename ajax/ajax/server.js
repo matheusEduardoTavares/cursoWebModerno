@@ -6,7 +6,9 @@ const app = express()
 // O express.static('.') serve para dizer que 
 //dentro da pasta atual (.) , no qual o server.js
 //está, sirva os arquivos estáticos (os arquivos 
-//HTML, CSS, fontes, dados, e os arquivos JS).
+//HTML, CSS, fontes, dados, e os arquivos JS). O
+//. serve para indicar tudo no diretório em que
+//está esse arquivo.
 app.use(express.static('.'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -19,7 +21,7 @@ app.use(bodyParser.json())
 //ação que seria executado, aí apenas nessa tal URL
 //eles seriam executados, mas esse não foi o caso.
 
-app.get('/teste', (request, response) => response.send('Ok'))
+// app.get('/teste', (request, response) => response.send(new Date))
 
 //Por padrão é mostrado o index.html
 
