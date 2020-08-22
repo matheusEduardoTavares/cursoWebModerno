@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <!-- Importando o axios -->
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // Axios é um cliente http, uma biblioteca 
+        //de terceiros. É uma API muito usada.
+        // Pegaremos a lista de estados em JSON e a
+        //colocaremos na tela como já fizemos antes:
+        const url = 'dados/estados.json'
+        // Aqui no axios não precisamos converter a
+        //resposta para json. Por padrão a resposta é
+        //um objeto, e o conteúdo que queremos vem
+        //dentro da chave data que está dentro  
+        //desse objeto.
+        axios(url).then(resp => {
+            const itens = resp.data.reduce(
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
+    </script>
+</body>

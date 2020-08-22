@@ -58,7 +58,9 @@
             //fetch mas com async await:
             try{
                 const resp = await fetch(form.action, options)
+                console.log(resp)
                 const json = await resp.json()
+                console.log(json)
                 resultado.innerHTML = JSON.stringify(json)
             }
             catch (err){

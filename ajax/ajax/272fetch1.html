@@ -18,11 +18,10 @@
         //alta.
 
         const url = 'dados/estados.json'
-        // O fetch retorna uma promise, e seu resultado
-        //não é o JSON pronto, mas usando o método json
-        //para essa resposta, é retornado uma nova 
-        //promise com o JSON dos dados que esperávamos,
-        //mas já convertidos para objeto.
+        // O método fetch() retorna uma Promise que retorna uma 
+        // Response, como, nesse exemplo, queremos 
+        // recuperar um json então utilizamos o 
+        // método json()
         fetch(url)
             .then(resp => resp.json())
             .then(estados => {
