@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        // O fetch não requer framework pois é algo
+        //intrínsico do browser, não precisamos 
+        //importar nada. Trabalhamos de uma forma
+        //mais fácil pois a abstração sua é mais
+        //alta.
+
+        const url = 'dados/estados.json'
+        // O fetch retorna uma promise, e seu resultado
+        //não é o JSON pronto, mas usando o método json
+        //para essa resposta, é retornado uma nova 
+        //promise com o JSON dos dados que esperávamos,
+        //mas já convertidos para objeto.
+        fetch(url)
+            .then(resp => resp.json())
+            .then(estados => {
+                const itens = estados.reduce(
+                    (html, estado) => html + `<li>${estado.nome}</li>`, ''
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+    </script>
+</body>
