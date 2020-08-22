@@ -88,4 +88,19 @@ app.post('/formulario', (req, res) => {
     })
 })
 
+app.get('/parOuImpar', (req, res) => {
+    // Dentro do express existe algumas formas de 
+    //obtermos os dados do frontend e uma dessas 
+    //formas é usar o req.body
+    // Outra forma é o req.query que vem na URL em
+    //?[atributos], ex: /index?id=5
+    // E por fim temos o req.params, que também vem
+    //na url mas vem um único valor , ex: /index/:id
+    //ou com mais de um valor: /index/:id/:password
+    const par = parseInt(req.query.numero) % 2 === 0
+    res.send({
+        resultado: par ? 'par' : 'impar'
+    })
+})
+
 app.listen(8080, () => console.log('Executando...'))
