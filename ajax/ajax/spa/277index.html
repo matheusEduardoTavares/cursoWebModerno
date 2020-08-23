@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        /*
+        Nessa aula faremos uma mini-SPA. Faremos
+        uma navegação com AJAX
+        */
+
+        //Para armazenarmos um histórico da navegação
+        //pois apenas com AJAX sem tratar isso não 
+        //é possível , passamos esse terceiro
+        //parâmetro push que se inicializa em
+        //true se não for passado nada.
+        function navegarViaAjax(url, seletor, push = true) {
+           if (!url || !seletor) return 
+
+           //Como queremos os dados em HTML e não
+           //em JSON, pegaremos o resultado do 
+           //.text da response do fetch, e não
+           //o .json
+           const elemento = document.querySelector(seletor)
+           fetch(url)
+            .then(resp => resp.text())
+            .then(html => {
+                elemento.innerHTML = html
+                if (push) {
+                    // Dentro de window temos:
+                    //document, history,
+                    //location e outros objetos
+                    //importantes. Se o push
+                    //for true, chamamos o 
+                    //método pushState do
+                    //history que podemos
+                    //acessá-lo apenas usando
+                    //history já que ele é do
+                    //objeto global do browser
+                    //O primeiro parâmetro para
+                    //o pushState é o estado,
+                    //então passamos um objeto
+                    //contendo o seletor. O 
+                    //segundo parâmetro é o
+                    //título da página, então
+                    //podemos passar null porque
+                    //não nos interessa. O 
+                    //último é a url que queremos
+                    //colocar no histórico do browser
+                    //com isso, a URL no navegador
+                    //também é atualizada de forma
+                    //que servirá de histórico,
+                    //mesmo sendo um SPA.
+                    //O push seu intuito é que 
+                    //quando for clicado em voltar
+                    //ele passe a ser falso pois
+                    //não faz sentido adicionar a volta
+                    //no histórico.
+                    history.pushState({ seletor }, null, url)
+                }
+            })
+        }
+
+        document.querySelectorAll('[wm-link]')
+            .forEach(link => {
+                const url = link.attributes['wm-link'].value
+                const seletorDestino = link.attributes['wm-destino'].value
+
+                link.onclick = e => {
+                    e.preventDefault()
+
+                    navegarViaAjax(url, seletorDestino)
+                }
+            })
+
+        //Agora precisamos tratar o evento onpopstate
+        //do window, a função pop é para tirar o
+        //primeiro elemento da pilha, temos uma
+        //pilha do histórico de navegação, e 
+        //quando clicamos em voltar é tirado
+        //um elemento da pilha de histórico.
+        window.onpopstate = e => {
+            if (e.state) {
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+    </script>
+</body>
