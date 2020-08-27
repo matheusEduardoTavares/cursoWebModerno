@@ -1,0 +1,62 @@
+Gulp e Webpack são duas ferramentas que tem
+o mesmo propósito, que é ajudar na automatização
+do build do projeto. Suas filosofias são
+bem diferentes.
+
+Enquanto o gulp trabalha com tasks, onde temos
+o padrão pipe and filter, o webpack é 
+completamente baseado no sistema de módulos.
+Temos 2 principais sistemas de módulos do
+JS: CommonsJS onde o node é baseado (module.exports,
+require) e temos o padrão que veio no 
+ECMAScript 2015 que é o sistema baseado em 
+import e export. Iremos trabalhar com os 2 
+sistemas, mas o webpack é completamente baseado
+no sistema de módulos.
+
+Temos no webpack:
+- O ponto de entrada (entry) , que é um 
+arquivo JS. Nesse caso poderemos usar qualquer
+um dos 2 principais sistemas de módulos já
+citados. Até podemos misturar, mas não é bom
+misturar. A partir do arquivo JS de entrada, esse
+mesmo arquivo JS pode fazer referência para vários
+outros arquivos, e esses arquivos por sua vez
+referenciar outros arquivos e assim por diante.
+A partir do sistema de módulos o webpack sai 
+navegando por todo o sistema de módulos da nossa
+aplicação.
+- Loader: Baseado na extensão do arquivo, será
+aplicado um tipo de lógica para renderizar 
+aquele arquivo. A forma de interpretar um arquivo
+JS é bem diferente de interpretar um arquivo de
+imagem, SASS, uma fonte, etc. Então dentro do 
+webpack iremos registrar vários loaders aplicando
+um dado loader a um determinado conjunto de 
+extensões, ou uma única extensão, e quando o 
+webpack for carregar um arquivo daquela dada
+extensão ele irá passar par aum loader específico
+que faz seu trabalho e no fim os arquivos são
+gerados, os recursos estáticos da nossa
+aplicação.
+
+Diferente do gulp que com uma expressão escolhíamos
+os arquivos que iríamos tentar obter, com o 
+webpack tudo começa a partir do JS e ele 
+começa a carregar todos os arquivos a partir 
+do sistema de módulos, podendo fazer essas
+importações diretamente no JS ou a referência
+pode estar dentro de um arquivo css. 
+Baseado em todos arquivos que ele conseguir
+encontrar com base no arquivo de entrada e nas 
+importações desse arquivo de entrada, tais 
+arquivos encontrados serão processados a partir
+do loader e no final será gerado os recursos
+estáticos da nossa aplicação.
+
+O webpack também tem um servidor que faz o 
+carregamento automático sempre que há uma 
+mudança, e faz o build automático por padrão,
+diferente do gulp que precisamos configurar o 
+watch, no webpack ele mesmo já faz isso
+automaticamente.
