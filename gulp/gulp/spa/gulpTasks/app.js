@@ -39,6 +39,12 @@ function appIMG() {
         .pipe(gulp.dest('build/assets/imgs'))
 }
 
+// Aqui iremos definir o nome das tasks:
+gulp.task('appHTML', appHTML)
+gulp.task('appIMG', appIMG)
+gulp.task('appJS', appJS)
+gulp.task('appCSS', appCSS)
+
 module.exports = {
     appHTML,
     appCSS,
