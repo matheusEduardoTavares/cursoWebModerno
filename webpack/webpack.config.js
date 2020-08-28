@@ -50,5 +50,43 @@ module.exports = {
         //main.js
         filename: 'principal.js',
         path: __dirname + '/public'
+    },
+    // Configuramos os loaders colocando um
+    //objeto para cada loader dentro de um 
+    //array com chave rules, que por sua vez
+    //está dentro de um objeto com chave module
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                // Por enquanto usaremos 2
+                //plugins para ler os 
+                //arquivos CSS e depois
+                //adicionaremos +2 plugins,
+                //um deles relacionados ao
+                //SASS
+                use: [
+                    // O style-loader adiciona
+                    //dentro da DOM a tag
+                    //style, ou seja, adiciona
+                    //CSS a DOM injetando a 
+                    //tag <style>
+                    'style-loader',
+                    // O css-loader é quem 
+                    //interpreta os imports,
+                    //o @import, as urls
+                    //url()
+                    'css-loader'
+                    /*
+                    O arquivo gerado pelo loader
+                    style-loader vai injetar via
+                    DOM todo código CSS que for
+                    encontrado, o que é 
+                    equivalente a criar a tag
+                    style via DOM.
+                    */
+                ]
+            }
+        ]
     }
 }
