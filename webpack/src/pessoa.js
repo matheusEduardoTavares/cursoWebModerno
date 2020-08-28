@@ -14,3 +14,5 @@ export default class Pessoa {
 //         return 'Bom dia!'
 //     }
 // }
+
+import './modulos/moduloA'
