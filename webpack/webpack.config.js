@@ -37,6 +37,8 @@ const webpack = require('webpack')
 //colocarmos o mode, por padrão será setado
 //como production.
 
+//Aula 303:
+/*
 module.exports = {
     mode: 'development',
     entry: './src/principal.js',
@@ -77,14 +79,59 @@ module.exports = {
                     //o @import, as urls
                     //url()
                     'css-loader'
-                    /*
-                    O arquivo gerado pelo loader
-                    style-loader vai injetar via
-                    DOM todo código CSS que for
-                    encontrado, o que é 
-                    equivalente a criar a tag
-                    style via DOM.
-                    */
+                    
+                    // O arquivo gerado pelo loader
+                    // style-loader vai injetar via
+                    // DOM todo código CSS que for
+                    // encontrado, o que é 
+                    // equivalente a criar a tag
+                    // style via DOM.
+                    
+                ]
+            }
+        ]
+    }
+}
+*/
+
+//Aula 304:
+// Agora iremos usar o loader
+//mini-css-extract-plugin , que irá extrair
+//o CSS para um arquivo específico, podendo
+//parar de usar a estratégia do style-loader.
+//Para tal iremos através do npm instalar esse
+//plugin.
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+module.exports = {
+    mode: 'development',
+    entry: './src/principal.js',
+    output: {
+        filename: 'principal.js',
+        path: __dirname + '/public'
+    },
+    // Área para colocar os plugins:
+    plugins: [
+        // É uma função construtora, então a
+        //instanciamos e passamos como 
+        //parâmetro um objeto com os parâmetros
+        new MiniCssExtractPlugin({
+            //Nome do arquivo que será gerado
+            //a partir da interpretação dos
+            //arquivos CSS:
+            filename: 'estilo.css'
+        })
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    // Esse plugin conflita com
+                    //o style-loader então o 
+                    //tiramos
+                    "css-loader",
                 ]
             }
         ]
