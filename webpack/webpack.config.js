@@ -3,11 +3,11 @@
 
 const webpack = require('webpack')
 
-module.exports = {
-    // mode: 'production',
-    mode: 'development',
-    entry: './src/principal.js'
-}
+// module.exports = {
+//     // mode: 'production',
+//     mode: 'development',
+//     entry: './src/principal.js'
+// }
 
 // No package.json colocamos o script start
 //chamando webpack, então quando executarmos
@@ -36,3 +36,19 @@ module.exports = {
 //do código gerado para desenvolvimento. Sem
 //colocarmos o mode, por padrão será setado
 //como production.
+
+module.exports = {
+    mode: 'development',
+    entry: './src/principal.js',
+    // É interessante fazermos a configuração
+    //da saída: onde será gerado o arquivo
+    //principal e o nome da pasta:
+    output: {
+        // Só com o filename o nome da pasta
+        //se mantém dist. Só com o path o 
+        //nome do arquivo se mantém como
+        //main.js
+        filename: 'principal.js',
+        path: __dirname + '/public'
+    }
+}
